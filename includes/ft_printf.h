@@ -27,6 +27,7 @@
 typedef struct		s_info
 {
 	int				chars_printed;
+	int				zero;
 	int				i;
 	int				maxwth;
 	int				minwth;
@@ -38,6 +39,7 @@ typedef struct		s_info
 	char			*modifiers;
 	char			*flag_arr;
 	char			curr_flags[6];
+	char			curr_arg;
 	va_list			args;
 }					t_info;
 

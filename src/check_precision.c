@@ -25,4 +25,6 @@ void	check_precision(t_info *info)
 			info->i++;
 		}
 	}
+	else
+		info->precision = -1;
 }

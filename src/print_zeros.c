@@ -12,35 +12,25 @@
 
 #include "../includes/ft_printf.h"
 
-void	print_zeros_minwth(t_info *info, int len)
-{
-	int		diff;
-
-	diff = info->minwth - len;
-	while (diff > 0)
-	{
-		write(1, "0", 1);
-		info->chars_printed++;
-		diff--;
-	}
-}
-
 void	print_zeros(t_info *info, int len)
 {
 	int		diff;
 
-	diff = info->precision - len;
-	if (info->is_negative)
-		diff++;
-	if (info->curr_flags[ZERO])
-		print_zeros_minwth(info, len);
-	//printf("minwth: %d | diff: %d | len: %d | prec: %d | is_negative: %d\n", info->minwth, diff, len, info->precision, info->is_negative);
+	if (info->precision > 0)
+	{
+		diff = info->precision - len;
+		if (info->is_negative)
+			diff++;
+	}
+	else
+		diff = info->minwth - len;
 	while (diff > 0)
 	{
 		write(1, "0", 1);
 		info->chars_printed++;
 		diff--;
 	}
+	//printf("minwth: %d | diff: %d | len: %d | prec: %d | is_negative: %d\n", info->minwth, diff, len, info->precision, info->is_negative);
 }
 
 /*

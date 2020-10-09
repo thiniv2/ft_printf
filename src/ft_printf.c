@@ -17,6 +17,7 @@ void	init(t_info *info)
 {
 	info->chars_printed = 0;
 	info->i = 0;
+	info->zero = 0;
 	info->arguments = "cspdiouxXf%";
 	info->flag_arr = "#0-+ ";
 	info->modifiers = "lhL";

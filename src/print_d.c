@@ -17,6 +17,10 @@ int		nbr_count(int nbr, t_info *info)
 	int		res;
 
 	res = 0;
+	if (info->zero == 1)
+		return (0);
+	if (nbr == 0)
+		return (1);
 	if (nbr < 0)
 	{
 		res++;
@@ -28,7 +32,8 @@ int		nbr_count(int nbr, t_info *info)
 		res++;
 	}
 	if (info->curr_flags[PLUS])
-		res++;
+		res += 0;
+	//	res++;
 	return (res);
 }
 
@@ -50,14 +55,17 @@ void    print_d(t_info *info)
 	int		len;
 
 	nbr = (int)va_arg(info->args, int);
+	if (nbr == 0 && info->precision == 0)
+		info->zero = 1;
 	len = nbr_count(nbr, info);
 	info->is_negative = (nbr < 0) ? 1 : 0;
-	if (!info->curr_flags[MINUS] && !info->curr_flags[ZERO])
+	if (!info->curr_flags[MINUS])
 		print_minwth(info, len);
 	nbr = print_plus_minus(nbr, info);
 	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS]) || (info->precision > 0))
 		print_zeros(info, len);
-	ft_putnbr(nbr);
+	if (info->zero == 0)
+		ft_putnbr(nbr);
 	info->chars_printed += len;
 	if (info->curr_flags[MINUS])
 		print_minwth(info, len);

@@ -14,11 +14,12 @@
 
 void		read_arg_type(t_info *info)
 {
+	info->curr_arg = CURR_POS;
 	if (CURR_POS == 'c')
 		print_char(info);
 	if (CURR_POS == 's')
 		print_str(info);
-	if (CURR_POS == 'd')
+	if ((CURR_POS == 'd') || (CURR_POS == 'i'))
 		print_d(info);
 	info->i++;
 }

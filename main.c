@@ -12,20 +12,61 @@
 
 #include "includes/ft_printf.h"
 
+
 int		main(void)
 {
-	int		a;
-	int		b;
-	char	*str;
-	char	c;
 	int		i;
+	char	*s1;
+	char	*str;
 
-	str = "Hello world";
+/*
+** test 1
+*/
+/*
 	i = 42;
-	c = 'K';
-	a = printf("a: |%4d|\n", i);
-	b = ft_printf("b: |%4d|\n", i);
-	printf("real: %d | oma: %d\n", a, b);
+	sprintf(s1, "a1: |%5.4d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b1: |%5.4d|\n", i);
+
+	write(1, "\n", 1);
+*/
+
+/*
+** test 2
+*/
+
+/*
+	i = -1;
+	sprintf(s1, "a2: |%+4.3d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b2: |%+4.3d|\n", i);
+
+	write(1, "\n", 1);
+*/
+
+/*
+** test 3
+*/
+/*
+	i = 42;
+	sprintf(s1, "a3: |%06.4d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b3: |%06.4d|\n", i);
+
+	write(1, "\n", 1);
+*/
+	i = 42;
+	str = "hehe";
+	sprintf(s1, "a4: |%-2.s|\n", str);
+	write(1, s1, strlen(s1));
+	ft_printf("b4: |%-2.s|\n", str);
+
+	write(1, "\n", 1);
+/*
+	sprintf(s1, "a5: |%6.3d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b5: |%6.3d|\n", i);
+*/
 /*
 	ft_printf("ft_printf: |%6s|\n", "Hello");
 	printf("printf:    |%6s|\n", "Hello");

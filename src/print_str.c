@@ -16,23 +16,29 @@ void		print_str(t_info *info)
 {
 	char		*str;
 	int			len;
+	char		*print;
 
 	str = (char*)va_arg(info->args, char*);
-	len = ft_strlen(str);
-	if (!(info->curr_flags[MINUS]) && len < info->minwth)
+	if (str == NULL)
+		print = "(null)";
+	else
+		print = ft_strdup(str);
+	len = ft_strlen(print);
+	if (!(info->curr_flags[MINUS]))
 		print_minwth(info, len);
 	if (info->precision < len && info->is_dot == 1)
 	{
-		write(1, str, info->precision);
+		write(1, print, info->precision);
+		if (info->curr_flags[MINUS])
+			print_minwth(info, len);
 		info->chars_printed += info->precision;
 	}
-	else if (str == NULL)
-		ft_putstr("(null)");
 	else
 	{
-		ft_putstr(str);
+		ft_putstr(print);
 		info->chars_printed += len;
 		if (info->curr_flags[MINUS])
 			print_minwth(info, len);
 	}
+	free(print);
 }
