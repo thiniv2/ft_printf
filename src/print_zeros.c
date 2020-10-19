@@ -20,34 +20,18 @@ void	print_zeros(t_info *info, int len)
 	{
 		diff = info->precision - len;
 		if (info->is_negative)
+		{
+			//printf("is_negative: %d\n", info->is_negative);
 			diff++;
+		}
 	}
 	else
 		diff = info->minwth - len;
+	//printf("zeroes: %d\n", diff);
 	while (diff > 0)
 	{
 		write(1, "0", 1);
 		info->chars_printed++;
 		diff--;
 	}
-	//printf("minwth: %d | diff: %d | len: %d | prec: %d | is_negative: %d\n", info->minwth, diff, len, info->precision, info->is_negative);
 }
-
-/*
-void		print_zeros(t_info *info, int len)
-{
-	int		diff;
-
-	diff = info->minwth - len;
-	printf("minwth: %d | len: %d | diff: %d | prec: %d\n", info->minwth, len, diff, info->precision);
-	if (info->precision > 0)
-		diff = info->precision - diff;
-	if (info->curr_flags[PLUS])
-		diff++;
-	while (diff-- > 0)
-	{
-		write(1, "0", 1);
-		info->chars_printed++;
-	}
-}
-*/

@@ -40,5 +40,4 @@ void		print_str(t_info *info)
 		if (info->curr_flags[MINUS])
 			print_minwth(info, len);
 	}
-	free(print);
 }

@@ -17,6 +17,8 @@ int		modify_d(t_info *info, int len)
 	int		diff;
 
 	diff = 0;
+	if (info->zero)
+		return (info->minwth);
 	if (info->precision > 0)
 	{
 		if (info->precision < len)
@@ -57,7 +59,10 @@ void	print_minwth(t_info *info, int len)
 	int		diff;
 
 	diff = 0;
-	if (info->curr_arg == 'd' || info->curr_arg == 'i')
+	if (info->curr_arg == 'd' || info->curr_arg == 'i' ||
+		info->curr_arg == 'x' || info->curr_arg == 'X')
+		diff = modify_d(info, len);
+	else if (info->curr_arg == 'o')
 		diff = modify_d(info, len);
 	else if (info->curr_arg == 's' || info->curr_arg == 'c')
 		diff = modify_s(info, len);

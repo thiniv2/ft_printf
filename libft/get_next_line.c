@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int		ft_new_line(int fd, char **line, char **str)
+static int	ft_new_line(int fd, char **line, char **str)
 {
 	int		len;
 	char	*tmp;
@@ -38,7 +38,7 @@ int		ft_new_line(int fd, char **line, char **str)
 	return (1);
 }
 
-int		get_next_line(const int fd, char **line)
+int			get_next_line(const int fd, char **line)
 {
 	int				ret;
 	static char		*str[MAX_FD];

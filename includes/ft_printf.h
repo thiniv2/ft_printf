@@ -53,6 +53,9 @@ typedef enum		e_flags
 }					t_flags;
 
 int					ft_printf(const char *format, ...);
+int					base_nbr_count(long long value, int base);
+char				*ft_itoa_base(long long value, int base);
+char				*ft_itoa_base_caps(long long value, int base);
 void				print_char(t_info *info);
 void				read_format(t_info *info);
 void				check_flags(t_info *info);
@@ -63,4 +66,6 @@ void				print_minwth(t_info *info, int len);
 void				check_precision(t_info *info);
 void				print_d(t_info *info);
 void				print_zeros(t_info *info, int len);
+void				print_hexa(t_info *info);
+void				print_octal(t_info *info);
 #endif

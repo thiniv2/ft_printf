@@ -33,14 +33,16 @@ int		nbr_count(int nbr, t_info *info)
 	}
 	if (info->curr_flags[PLUS])
 		res += 0;
-	//	res++;
 	return (res);
 }
 
 int		print_plus_minus(int nbr, t_info *info)
 {
-	if (info->curr_flags[PLUS] && nbr > 0)
+	if (info->curr_flags[PLUS] && nbr >= 0)
+	{
 		write(1, "+", 1);
+		info->chars_printed++;
+	}
 	if (nbr < 0)
 	{
 		write(1, "-", 1);

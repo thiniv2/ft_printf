@@ -18,6 +18,7 @@ void	set_value(t_info *info)
 	info->minwth = 0;
 	info->precision = 0;
 	info->is_dot = 0;
+	info->is_negative = 0;
 	info->curr_flags[HASH] = '\0';
 	info->curr_flags[ZERO] = '\0';
 	info->curr_flags[MINUS] = '\0';

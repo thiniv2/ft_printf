@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:44:30 by thinguye          #+#    #+#             */
-/*   Updated: 2020/09/30 19:23:45 by thinguye         ###   ########.fr       */
+/*   Updated: 2020/10/16 12:02:25 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@
 int		main(void)
 {
 	int		i;
+	int		a;
+	int		b;
 	char	*s1;
 	char	*str;
 
-/*
-** test 1
-*/
+	i = 0;
+	a = printf("a1: |%-.4o|\n", i);
+ b = ft_printf("b1: |%-.4o|\n", i);
+	printf("a: %d | b: %d\n", a, b);
+
 /*
 	i = 42;
 	sprintf(s1, "a1: |%5.4d|\n", i);
@@ -29,32 +33,21 @@ int		main(void)
 	ft_printf("b1: |%5.4d|\n", i);
 
 	write(1, "\n", 1);
-*/
 
-/*
-** test 2
-*/
-
-/*
 	i = -1;
 	sprintf(s1, "a2: |%+4.3d|\n", i);
 	write(1, s1, strlen(s1));
 	ft_printf("b2: |%+4.3d|\n", i);
 
 	write(1, "\n", 1);
-*/
 
-/*
-** test 3
-*/
-/*
 	i = 42;
 	sprintf(s1, "a3: |%06.4d|\n", i);
 	write(1, s1, strlen(s1));
 	ft_printf("b3: |%06.4d|\n", i);
 
 	write(1, "\n", 1);
-*/
+
 	i = 42;
 	str = "hehe";
 	sprintf(s1, "a4: |%-2.s|\n", str);
@@ -62,12 +55,12 @@ int		main(void)
 	ft_printf("b4: |%-2.s|\n", str);
 
 	write(1, "\n", 1);
-/*
+
 	sprintf(s1, "a5: |%6.3d|\n", i);
 	write(1, s1, strlen(s1));
+
+
 	ft_printf("b5: |%6.3d|\n", i);
-*/
-/*
 	ft_printf("ft_printf: |%6s|\n", "Hello");
 	printf("printf:    |%6s|\n", "Hello");
 	printf("%04d\n", 123);
