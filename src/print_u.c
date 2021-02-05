@@ -1,53 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_octal.c                                      :+:      :+:    :+:   */
+/*   print_u.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: thinguye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/13 15:07:51 by thinguye          #+#    #+#             */
-/*   Updated: 2020/11/02 06:33:48 by thinguye         ###   ########.fr       */
+/*   Created: 2020/10/25 15:53:29 by thinguye          #+#    #+#             */
+/*   Updated: 2020/10/25 15:53:31 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void		handle_hash_o(t_info *info, uintmax_t value)
+void		print_invis_plus(t_info *info)
 {
-	if (info->curr_flags[HASH] && value != 0)
-	{
-		write(1, "0", 1);
-		info->chars_printed++;
-	}
+	write(1, " ", 1);
+	info->chars_printed++;
 }
 
-void			print_octal(t_info *info)
+void		print_u(t_info *info)
 {
-	uintmax_t	value;
-	int			len;
-	char		*str;
+	uintmax_t		nbr;
+	int				len;
 
-	value = set_unsigned_modifier(info);
-	str = ft_uitoa_base(value, 8);
-	len = ft_strlen(str);
-	if (value == 0 && info->precision == 0)
-	{
+	nbr = set_unsigned_modifier(info);
+	if (nbr == 0 && info->precision == 0)
 		info->zero = 1;
-		info->chars_printed--;
-	}
-	if (info->curr_flags[HASH])
-		info->precision--;
+	len = unsigned_nbr_count(nbr, info);
 	if (!info->curr_flags[MINUS])
 		print_minwth(info, len);
-	handle_hash_o(info, value);
+	if (info->curr_flags[PLUS])
+		print_invis_plus(info);
 	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS])
-		|| info->precision > 0)
+	|| (info->precision > 0))
 		print_zeros(info, len);
 	if (info->zero == 0)
-		ft_putstr(str);
+		ft_putnbr_uintmax(nbr);
 	info->chars_printed += len;
 	if (info->curr_flags[MINUS])
 		print_minwth(info, len);
-	if (value > 0)
-		free(str);
 }

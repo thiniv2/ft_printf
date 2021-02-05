@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   print_float.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/15 11:42:26 by thinguye          #+#    #+#             */
-/*   Updated: 2020/09/17 18:04:58 by thinguye         ###   ########.fr       */
+/*   Created: 2021/01/05 18:45:58 by thini-42          #+#    #+#             */
+/*   Updated: 2021/01/26 19:12:20 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		print_char(t_info *info)
+void	print_float(t_info *info)
 {
-	char	c;
+	long double nbr;
 
-	c = (char)va_arg(info->args, int);
-	if (!(info->curr_flags[MINUS] && info->minwth > 0))
-		print_minwth(info, 1);
-	write(1, &c, 1);
-	if (info->curr_flags[MINUS])
-		print_minwth(info, 1);
-	info->chars_printed++;
+	nbr = set_modifier(info);
+	if (nbr < 0)
+	{
+		info->is_negative = 1;
+		nbr *= -1;
+	}
 }

@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_intmax.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/15 11:42:26 by thinguye          #+#    #+#             */
-/*   Updated: 2020/09/17 18:04:58 by thinguye         ###   ########.fr       */
+/*   Created: 2020/10/20 14:55:12 by thinguye          #+#    #+#             */
+/*   Updated: 2020/10/20 14:55:12 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		print_char(t_info *info)
+void	ft_putnbr_intmax(intmax_t nbr)
 {
-	char	c;
-
-	c = (char)va_arg(info->args, int);
-	if (!(info->curr_flags[MINUS] && info->minwth > 0))
-		print_minwth(info, 1);
-	write(1, &c, 1);
-	if (info->curr_flags[MINUS])
-		print_minwth(info, 1);
-	info->chars_printed++;
+	if (nbr < 0)
+	{
+		ft_putchar('-');
+		nbr = nbr * -1;
+	}
+	if ((nbr / 10) > 0)
+		ft_putnbr_intmax(nbr / 10);
+	ft_putchar(nbr % 10 + '0');
 }

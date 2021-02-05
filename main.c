@@ -3,111 +3,256 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:44:30 by thinguye          #+#    #+#             */
-/*   Updated: 2020/10/16 12:02:25 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:53:21 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
-
+//#include <assert.h>
 
 int		main(void)
 {
-	int		i;
-	int		a;
-	int		b;
-	char	*s1;
-	char	*str;
+	int				i;
+	int				min_int;
+	int				max_int;
+	uintmax_t		uintmax;
+	long long		ll;
+	int				a;
+	int				b;
+	char			*s1[90];
+	char			*str;
 
-	i = 0;
-	a = printf("a1: |%-.4o|\n", i);
- b = ft_printf("b1: |%-.4o|\n", i);
-	printf("a: %d | b: %d\n", a, b);
+	ll = 9223372036854775807;
+	uintmax = 18446744073709551615u;
+	i = 142;
+	min_int = -2147483648;
+	max_int = 2147483647;
+
+	//TESTING FLOATS
+	sprintf(s1, "TESTING FLOATS\n");
+	write(1, s1, strlen(s1));
+
+	float f = 5.35;
+
+	sprintf(s1, "a1: |%f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b1: |%f|\n", f);
+
+	sprintf(s1, "a2: |%.3f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b2: |%.3f|\n", f);
+
+	sprintf(s1, "a3: |%10f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b3: |%10f|\n", f);
+
 
 /*
+	//	TESTING PERCENT
+	sprintf(s1, "\nTESTING PERCENT\n");
+	write(1, s1, strlen(s1));
+
+	sprintf(s1, "a1: |%%|\n");
+	write(1, s1, strlen(s1));
+	ft_printf("b1: |%%|\n");
+
+	sprintf(s1, "a2: |%6%|\n");
+	write(1, s1, strlen(s1));
+	ft_printf("b2: |%6%|\n");
+
+	sprintf(s1, "a3: |%-%|\n");
+	write(1, s1, strlen(s1));
+	ft_printf("b3: |%-%|\n");
+
+	sprintf(s1, "a4: |%06%|\n");
+	write(1, s1, strlen(s1));
+	ft_printf("b4: |%06%|\n");
+*/
+/*
+
+//	TESTING STR
+	sprintf(s1, "\nTESTING STR\n");
+	write(1, s1, strlen(s1));
+
+	str = "hello world";
+//	TEST 1
+	sprintf(s1, "a1: |%s|\n", str);
+	write(1, s1, strlen(s1));
+	ft_printf("b1: |%s|\n", str);
+
+
+//	TEST 2
+	sprintf(s1, "a2: |%05.3s|\n", str);
+	write(1, s1, strlen(s1));
+	ft_printf("b2: |%05.3s|\n", str);
+
+//	TEST 3
+	sprintf(s1, "a3: |%016.6s|\n", str);
+	write(1, s1, strlen(s1));
+	ft_printf("b3: |%016.6s|\n", str);
+
+//	TEST 4
+	sprintf(s1, "a4: |%-16.10s|\n", str);
+	write(1, s1, strlen(s1));
+	ft_printf("b4: |%-16.10s|\n", str);
+
+//	TEST 5
+	sprintf(s1, "a5: |%-016.s|\n", str);
+	write(1, s1, strlen(s1));
+	ft_printf("b5: |%-016.s|\n", str);
+
+//	TEST 6
+	sprintf(s1, "a6: |%-13s|\n", str);
+	write(1, s1, strlen(s1));
+	ft_printf("b6: |%-13s|\n", str);
+
+
+//  TESTING D
+	sprintf(s1, "\nTESTING D\n");
+	write(1, s1, strlen(s1));
+//  TEST 1
+	sprintf(s1, "a1: |%0-8d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b1: |%0-8d|\n", i);
+
+//  TEST 2
+    sprintf(s1, "a2: |%.4d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b2: |%.4d|\n", i);
+
+//  TEST 3
+    sprintf(s1, "a3: |%05.d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b3: |%05.d|\n", i);
+
+//  TEST 4
+    sprintf(s1, "a4: |%#05.6d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b4: |%#05.6d|\n", i);
+
+//  TEST 5
+    sprintf(s1, "a5: |%-5d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b5: |%-5d|\n", i);
+
+//  TEST 6
+    sprintf(s1, "a6: |%-05.d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b6: |%-05.d|\n", i);
+
+//  TEST 7
+    sprintf(s1, "a7: |%07.d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b7: |%07.d|\n", i);
+
+//  TEST 8
+    sprintf(s1, "a8: |%07.1d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b8: |%07.1d|\n", i);
+
+//  TEST 9
+    sprintf(s1, "a9: |%0.5d|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b9: |%0.5d|\n", i);
+
+
+// TESTING xX
+
+	sprintf(s1, "\nTESTING xX\n");
+	write(1, s1, strlen(s1));
 	i = 42;
-	sprintf(s1, "a1: |%5.4d|\n", i);
+//	TEST 1
+	sprintf(s1, "a1: |%5.4x|\n", i);
 	write(1, s1, strlen(s1));
-	ft_printf("b1: |%5.4d|\n", i);
+	ft_printf("b1: |%5.4x|\n", i);
 
-	write(1, "\n", 1);
-
-	i = -1;
-	sprintf(s1, "a2: |%+4.3d|\n", i);
+//	TEST 2
+	sprintf(s1, "a2: |%#-10.6x|\n", i);
 	write(1, s1, strlen(s1));
-	ft_printf("b2: |%+4.3d|\n", i);
+	ft_printf("b2: |%#-10.6x|\n", i);
 
-	write(1, "\n", 1);
+//	TEST 3
+	sprintf(s1, "a3: |%#-.4x|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b3: |%#-.4x|\n", i);
 
+//	TEST 4
+	sprintf(s1, "a4: |%0-5x|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b4: |%0-5x|\n", i);
+
+//	TEST 5
+	sprintf(s1, "a5: |%04.0x|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b5: |%04.0x|\n", i);
+
+//	TEST 6
+	sprintf(s1, "a6: |%05x|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b6: |%05x|\n", i);
+
+//	TEST 7
+	sprintf(s1, "a7: |%#-5.6x|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b7: |%#-5.6x|\n", i);
+
+//	TEST 8
+	sprintf(s1, "a8: |%#07.x|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b8: |%#07.x|\n", i);
+
+	// TESTING OCTAL
 	i = 42;
-	sprintf(s1, "a3: |%06.4d|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b3: |%06.4d|\n", i);
 
-	write(1, "\n", 1);
-
-	i = 42;
-	str = "hehe";
-	sprintf(s1, "a4: |%-2.s|\n", str);
-	write(1, s1, strlen(s1));
-	ft_printf("b4: |%-2.s|\n", str);
-
-	write(1, "\n", 1);
-
-	sprintf(s1, "a5: |%6.3d|\n", i);
+	sprintf(s1, "TESTING OCTAL\n");
 	write(1, s1, strlen(s1));
 
 
-	ft_printf("b5: |%6.3d|\n", i);
-	ft_printf("ft_printf: |%6s|\n", "Hello");
-	printf("printf:    |%6s|\n", "Hello");
-	printf("%04d\n", 123);
-	printf("|%-5d|\n", 10);
-	printf("|%+5d|\n", 10);
-	printf("%05d\n", 10);
-	printf("|%10s|\n", "Hello");
-	printf("|%-10s|\n", "Hello");
-	b = ft_printf("ft_printf: BA%cAB%0%\n", 'K');
-	printf("\n");
-	a = printf("printf:    BA%cAB%0%\n", 'K');
-	printf("printed chars:\n");
-	printf("oma: %d printf: %d\n", b, a);	
-	ft_printf("ft_printf: ");
-	b = ft_printf("%s\n", str);
-	printf("printf: ");
-	a = printf("%s\n", str);
-	printf("printed chars:\n");
-	printf("oma: %d printf: %d\n", b, a);	
+//	TEST 1
+	sprintf(s1, "a1: |%o|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b1: |%o|\n", i);
 
-	ft_printf("ft_printf: %%\n");
-	ft_printf("ft_printf: zero: %0%\n");
-	ft_printf("\nft_printf: BA%cAB\n", 'K');
-	ft_printf("ft_printf: %s\n", str);
-	ft_printf("ft_printf: %s\n", "Bonjour Les Gens");
-	ft_printf("ft_printf: bonjour %s %s les gens\n", NULL, NULL);
+//	TEST 2
+	sprintf(s1, "a2: |%05o|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b2: |%05o|\n", i);
 
-	printf("\n");
-	printf("printf: %%\n");
-	printf("printf: zero: %0%\n");
-	printf("printf: BA%cAB\n", 'K');
-	printf("printf: %s\n", str);
-	printf("printf: %s\n", "Bonjour Les Gens");
-	printf("printf: bonjour %s %s les gens\n", NULL, NULL);
-	printf("printf: %s %s %s %s\n", NULL, NULL, NULL, NULL);
-	printf("printf: %s\n", str);
-	printf("printf: %s\n", "Bonjour Les Gens");
-	printf("printf: %s\n", NULL);
-	printf("testi 1 %10.3s\n", "moro vaan moro moro");
-	printf("|%*d|\n", 5, 10);
-	printf("%#x\n", 12); //prints: 0xc
-	printf("%04d\n", 42); //prints: 0042
-	printf("%+d\n", 52); //prints: +52
-	printf("|%-5d|\n", 64); //prints: |64   |
-	printf("testi 1 %2#.3s\n", "moro vaan moro moro");
-	printf("%3#.5u\n", 42);
-	printf("%.2L#3i\n", 1234567890123456789);
+//	TEST 3
+	sprintf(s1, "a3: |%-2.6o|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b3: |%-2.6o|\n", i);
+
+//	TEST 4
+	sprintf(s1, "a4: |%#6o|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b4: |%#6o|\n", i);
+
+//	TEST 5
+	sprintf(s1, "a5: |%#-4.o|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b5: |%#-4.o|\n", i);
+
+//	TEST 6
+	sprintf(s1, "a6: |%#5.4o|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b6: |%#5.4o|\n", i);
+
+//	TEST 7
+	sprintf(s1, "a6: |%#5.o|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b6: |%#5.o|\n", i);
+
+	sprintf(s1, "A percent: |%%|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("B percent: |%%|\n", i);
+
+	sprintf(s1, "A percent 2: |%5%|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("B percent 2: |%5%|\n", i);
 */
 	return (0);
 }

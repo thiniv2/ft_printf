@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   read_format.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 13:36:36 by thinguye          #+#    #+#             */
-/*   Updated: 2020/09/30 17:01:26 by thinguye         ###   ########.fr       */
+/*   Updated: 2020/12/09 18:44:42 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	set_value(t_info *info)
+void	set_tmp_values(t_info *info)
 {
 	info->maxwth = 0;
 	info->minwth = 0;
-	info->precision = 0;
+	info->precision = -1;
 	info->is_dot = 0;
 	info->is_negative = 0;
 	info->curr_flags[HASH] = '\0';
@@ -25,16 +25,19 @@ void	set_value(t_info *info)
 	info->curr_flags[PLUS] = '\0';
 	info->curr_flags[SPACE] = '\0';
 	info->curr_flags[5] = '\0';
+	info->curr_modifiers[0] = '\0';
+	info->curr_modifiers[1] = '\0';
+	info->curr_modifiers[2] = '\0';
 }
 
 void	call_readers(t_info *info)
 {
 	info->i++;
-	set_value(info);
+	set_tmp_values(info);
 	check_flags(info);
 	check_minwth(info);
 	check_precision(info);
-	//lenght modifier
+	check_modifier(info);
 	read_arg_type(info);
 }
 

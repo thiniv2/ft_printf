@@ -6,7 +6,7 @@
 #    By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 15:24:45 by thinguye          #+#    #+#              #
-#    Updated: 2020/10/19 12:53:19 by thinguye         ###   ########.fr        #
+#    Updated: 2020/09/30 14:15:26 by thinguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,13 @@ SRC_FILES = ft_printf.c \
 			print_zeros.c \
 			print_hexa.c \
 			ft_itoa_base.c \
-			print_octal.c
+			print_octal.c \
+			ft_putnbr_intmax.c \
+			print_p.c \
+			lenght_modifier.c \
+			print_u.c \
+			unsigned_convs.c \
+			print_percent.c
 SOURCES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(SRC_FILES:.c=.o)
 HDR = -L includes/ft_printf.h

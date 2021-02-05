@@ -1,30 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   unsigned_convs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/13 11:15:34 by thinguye          #+#    #+#             */
-/*   Updated: 2020/10/13 11:15:34 by thinguye         ###   ########.fr       */
+/*   Created: 2020/10/25 16:52:58 by thinguye          #+#    #+#             */
+/*   Updated: 2020/10/25 16:53:01 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		base_nbr_count(intmax_t value, int base)
+void	ft_putnbr_uintmax(uintmax_t nbr)
+{
+	if ((nbr / 10) > 0)
+		ft_putnbr_uintmax(nbr / 10);
+	ft_putchar(nbr % 10 + '0');
+}
+
+int		unsigned_nbr_count(uintmax_t nbr, t_info *info)
+{
+	int		res;
+
+	res = 0;
+	if (info->zero == 1)
+		return (0);
+	if (nbr == 0)
+		return (1);
+	while (nbr > 0)
+	{
+		nbr /= 10;
+		res++;
+	}
+	if (info->curr_flags[PLUS])
+		res += 0;
+	return (res);
+}
+
+int		ubase_nbr_count(uintmax_t value, int base)
 {
 	int	len;
 
 	len = 0;
 	if (value == 0)
 		return (1);
-	if (value < 0)
-	{
-		if (base == 10)
-			len++;
-		value *= -1;
-	}
 	while (value != 0)
 	{
 		value /= base;
@@ -33,7 +53,7 @@ int		base_nbr_count(intmax_t value, int base)
 	return (len);
 }
 
-char	*ft_itoa_base(intmax_t value, int base)
+char	*ft_uitoa_base(uintmax_t value, int base)
 {
 	int			len;
 	char		*ret;
@@ -41,16 +61,10 @@ char	*ft_itoa_base(intmax_t value, int base)
 
 	if (value == 0)
 		return ("0");
-	len = base_nbr_count(value, base);
+	len = ubase_nbr_count(value, base);
 	base_str = "0123456789abcdef";
 	ret = (char*)malloc(sizeof(char) * len + 1);
 	ret[len--] = '\0';
-	if (value < 0)
-	{
-		if (base == 10)
-			ret[0] = '-';
-		value *= -1;
-	}
 	while (value != 0)
 	{
 		ret[len] = base_str[value % base];
@@ -60,7 +74,7 @@ char	*ft_itoa_base(intmax_t value, int base)
 	return (ret);
 }
 
-char	*ft_itoa_base_caps(intmax_t value, int base)
+char	*ft_uitoa_base_caps(uintmax_t value, int base)
 {
 	int			len;
 	char		*ret;
@@ -68,16 +82,10 @@ char	*ft_itoa_base_caps(intmax_t value, int base)
 
 	if (value == 0)
 		return ("0");
-	len = base_nbr_count(value, base);
+	len = ubase_nbr_count(value, base);
 	base_str = "0123456789ABCDEF";
 	ret = (char*)malloc(sizeof(char) * len + 1);
 	ret[len--] = '\0';
-	if (value < 0)
-	{
-		if (base == 10)
-			ret[0] = '-';
-		value *= -1;
-	}
 	while (value != 0)
 	{
 		ret[len] = base_str[value % base];

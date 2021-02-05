@@ -1,24 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_minwth.c                                     :+:      :+:    :+:   */
+/*   check_max_minwth.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 13:13:22 by thinguye          #+#    #+#             */
-/*   Updated: 2020/09/30 19:26:27 by thinguye         ###   ########.fr       */
+/*   Updated: 2020/11/02 07:56:50 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+int		modify_ox(t_info *info, int len)
+{
+	int		diff;
+
+	diff = 0;
+	if (info->zero)
+		return (info->minwth - len);
+	if (info->precision > 0)
+	{
+		if (info->precision < len)
+			diff = info->minwth - len;
+		else
+			diff = info->minwth - info->precision;
+	}
+	else if (info->curr_flags[ZERO] && !info->curr_flags[MINUS])
+		diff = 0;
+	else
+		diff = info->minwth - len;
+	if (info->curr_flags[HASH])
+	{
+		if (info->curr_arg == 'x' || info->curr_arg == 'X')
+			diff--;
+		diff--;
+	}
+	if (info->curr_flags[ZERO] && info->precision == 0)
+	{
+		diff = info->minwth;
+		if (info->curr_flags[HASH])
+			diff -= 2;
+		diff -= len;
+	}
+	return (diff);
+}
 
 int		modify_d(t_info *info, int len)
 {
 	int		diff;
 
 	diff = 0;
-	if (info->zero)
-		return (info->minwth);
+	if (info->zero != info->curr_flags[MINUS] ||
+        (info->curr_flags[ZERO] && info->precision <= 0))
+		return (info->minwth - len);
 	if (info->precision > 0)
 	{
 		if (info->precision < len)
@@ -34,7 +69,7 @@ int		modify_d(t_info *info, int len)
 		diff--;
 	if (info->is_negative && info->precision > len)
 		diff--;
-	return(diff);
+	return (diff);
 }
 
 int		modify_s(t_info *info, int len)
@@ -59,14 +94,14 @@ void	print_minwth(t_info *info, int len)
 	int		diff;
 
 	diff = 0;
-	if (info->curr_arg == 'd' || info->curr_arg == 'i' ||
-		info->curr_arg == 'x' || info->curr_arg == 'X')
+	if (info->curr_arg == 'd' || info->curr_arg == 'i'
+	|| info->curr_arg == 'u')
 		diff = modify_d(info, len);
-	else if (info->curr_arg == 'o')
-		diff = modify_d(info, len);
+	else if (info->curr_arg == 'o' || info->curr_arg == 'p' ||
+			info->curr_arg == 'x' || info->curr_arg == 'X')
+		diff = modify_ox(info, len);
 	else if (info->curr_arg == 's' || info->curr_arg == 'c')
 		diff = modify_s(info, len);
-	//printf("minwth: %d | len: %d | diff: %d | prec: %d\n", info->minwth, len, diff, info->precision);
 	while (diff-- > 0)
 	{
 		write(1, " ", 1);
@@ -80,6 +115,11 @@ void	check_minwth(t_info *info)
 	{
 		info->minwth *= 10;
 		info->minwth += CURR_POS - 48;
+		info->i++;
+	}
+	if (CURR_POS == '*')
+	{
+		info->minwth = (int)va_arg(info->args, int);
 		info->i++;
 	}
 }

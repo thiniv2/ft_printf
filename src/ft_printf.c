@@ -22,8 +22,8 @@ void	init(t_info *info)
 	info->flag_arr = "#0-+ ";
 	info->modifiers = "lhL";
 }
-int		ft_printf(const char *format, ...)
 
+int		ft_printf(const char *format, ...)
 {
 	t_info		*info;
 
@@ -36,6 +36,7 @@ int		ft_printf(const char *format, ...)
 		init(info);
 		read_format(info);
 		va_end(info->args);
+		free(info);
 	}
 	return (info->chars_printed);
 }

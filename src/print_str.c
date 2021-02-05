@@ -12,6 +12,12 @@
 
 #include "../includes/ft_printf.h"
 
+void		handle_print(t_info *info, char *str, int len)
+{
+	write(1, str, len);
+	info->chars_printed += len;
+}
+
 void		print_str(t_info *info)
 {
 	char		*str;
@@ -35,8 +41,7 @@ void		print_str(t_info *info)
 	}
 	else
 	{
-		ft_putstr(print);
-		info->chars_printed += len;
+		handle_print(info, print, len);
 		if (info->curr_flags[MINUS])
 			print_minwth(info, len);
 	}

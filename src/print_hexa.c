@@ -3,23 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   print_hexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 10:56:24 by thinguye          #+#    #+#             */
-/*   Updated: 2020/10/13 10:56:24 by thinguye         ###   ########.fr       */
+/*   Updated: 2020/11/02 07:50:08 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	print_hexa(t_info *info)
+static void		handle_hash_x(t_info *info, uintmax_t value)
 {
-	int			len;
-	long long	value;
+	if (info->curr_flags[HASH] && value != 0)
+	{
+		if (info->curr_arg == 'x')
+			write(1, "0x", 2);
+		else
+			write(1, "0X", 2);
+		info->chars_printed += 2;
+        info->minwth += 2;
+	}
+}
+
+void			print_hexa(t_info *info)
+{
+	uintmax_t	value;
 	char		*res;
 
-	value = (long long)va_arg(info->args, long long);
-	len = base_nbr_count(value, 16);
+	value = set_unsigned_modifier(info);
 	if (info->curr_arg == 'x')
 		res = ft_itoa_base(value, 16);
 	else
@@ -30,12 +41,16 @@ void	print_hexa(t_info *info)
 		info->chars_printed--;
 	}
 	if (!info->curr_flags[MINUS])
-		print_minwth(info, len);
-	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS]) || info->precision > 0)
-		print_zeros(info, len);
+		print_minwth(info, ubase_nbr_count(value, 16));
+	handle_hash_x(info, value);
+	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS])
+		|| info->precision > 0)
+		print_zeros(info, ubase_nbr_count(value, 16));
 	if (info->zero == 0)
 		ft_putstr(res);
-	info->chars_printed += len;
+	info->chars_printed += ubase_nbr_count(value, 16);
 	if (info->curr_flags[MINUS])
-		print_minwth(info, len);
+		print_minwth(info, ubase_nbr_count(value, 16));
+	if (value > 0)
+		free(res);
 }

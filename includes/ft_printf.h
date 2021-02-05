@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:45:01 by thinguye          #+#    #+#             */
-/*   Updated: 2020/09/30 17:00:55 by thinguye         ###   ########.fr       */
+/*   Updated: 2020/12/09 18:31:17 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <stdlib.h>
+# include <stdint.h>
 # include <unistd.h>
 # include "../libft/libft.h"
 
@@ -40,6 +41,7 @@ typedef struct		s_info
 	char			*flag_arr;
 	char			curr_flags[6];
 	char			curr_arg;
+	char			curr_modifiers[3];
 	va_list			args;
 }					t_info;
 
@@ -53,9 +55,9 @@ typedef enum		e_flags
 }					t_flags;
 
 int					ft_printf(const char *format, ...);
-int					base_nbr_count(long long value, int base);
-char				*ft_itoa_base(long long value, int base);
-char				*ft_itoa_base_caps(long long value, int base);
+int					base_nbr_count(intmax_t value, int base);
+char				*ft_itoa_base(intmax_t value, int base);
+char				*ft_itoa_base_caps(intmax_t value, int base);
 void				print_char(t_info *info);
 void				read_format(t_info *info);
 void				check_flags(t_info *info);
@@ -68,4 +70,18 @@ void				print_d(t_info *info);
 void				print_zeros(t_info *info, int len);
 void				print_hexa(t_info *info);
 void				print_octal(t_info *info);
+void				ft_putnbr_intmax(intmax_t nbr);
+void				print_p(t_info *info);
+void				check_modifier(t_info *info);
+void				print_u(t_info *info);
+void				print_percent(t_info *info);
+int					nbr_count(intmax_t nbr, t_info *info);
+intmax_t			print_plus_minus(intmax_t nbr, t_info *info);
+intmax_t			set_modifier(t_info *info);
+uintmax_t			set_unsigned_modifier(t_info *info);
+int					unsigned_nbr_count(uintmax_t nbr, t_info *info);
+void				ft_putnbr_uintmax(uintmax_t nbr);
+char				*ft_uitoa_base_caps(uintmax_t value, int base);
+char				*ft_uitoa_base(uintmax_t value, int base);
+int					ubase_nbr_count(uintmax_t value, int base);
 #endif
