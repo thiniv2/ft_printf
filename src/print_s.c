@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_str.c                                        :+:      :+:    :+:   */
+/*   print_s.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 12:24:29 by thinguye          #+#    #+#             */
-/*   Updated: 2020/09/30 19:26:02 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/02/08 07:05:07 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		handle_print(t_info *info, char *str, int len)
 	info->chars_printed += len;
 }
 
-void		print_str(t_info *info)
+void		print_s(t_info *info)
 {
 	char		*str;
 	int			len;

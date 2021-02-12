@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lenght_modifier.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:50:07 by thinguye          #+#    #+#             */
-/*   Updated: 2021/01/28 19:31:25 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/02/05 16:49:00 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-long double set_double_modifier(t_info *info, long double nbr)
-{
-	if (ft_strcmp(info->curr_modifiers, "\0") == 0)
-		nbr = (double)va_arg(info->args, double);
-		
-	return ((long double)nbr);
-}
 
 intmax_t set_modifier(t_info *info)
 {

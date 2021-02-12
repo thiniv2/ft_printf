@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_octal.c                                      :+:      :+:    :+:   */
+/*   print_o.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:07:51 by thinguye          #+#    #+#             */
-/*   Updated: 2020/11/02 06:33:48 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/02/08 06:58:05 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void		handle_hash_o(t_info *info, uintmax_t value)
 	}
 }
 
-void			print_octal(t_info *info)
+void			print_o(t_info *info)
 {
 	uintmax_t	value;
 	int			len;

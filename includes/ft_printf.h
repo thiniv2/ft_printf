@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:45:01 by thinguye          #+#    #+#             */
-/*   Updated: 2020/12/09 18:31:17 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/02/08 07:05:40 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,17 @@ typedef enum		e_flags
 	SPACE = 4,
 }					t_flags;
 
+void				print_c(t_info *info);
+void				print_p(t_info *info);
+void				print_d(t_info *info);
+void				print_x(t_info *info);
+void				print_o(t_info *info);
+void				print_u(t_info *info);
+void				print_f(t_info *info);
+void				print_s(t_info *info);
+void				print_zeros(t_info *info, int len);
+void				print_percent(t_info *info);
+
 int					ft_printf(const char *format, ...);
 int					base_nbr_count(intmax_t value, int base);
 char				*ft_itoa_base(intmax_t value, int base);
@@ -66,15 +77,8 @@ void				print_str(t_info *info);
 void				check_minwth(t_info *info);
 void				print_minwth(t_info *info, int len);
 void				check_precision(t_info *info);
-void				print_d(t_info *info);
-void				print_zeros(t_info *info, int len);
-void				print_hexa(t_info *info);
-void				print_octal(t_info *info);
 void				ft_putnbr_intmax(intmax_t nbr);
-void				print_p(t_info *info);
 void				check_modifier(t_info *info);
-void				print_u(t_info *info);
-void				print_percent(t_info *info);
 int					nbr_count(intmax_t nbr, t_info *info);
 intmax_t			print_plus_minus(intmax_t nbr, t_info *info);
 intmax_t			set_modifier(t_info *info);
@@ -84,4 +88,5 @@ void				ft_putnbr_uintmax(uintmax_t nbr);
 char				*ft_uitoa_base_caps(uintmax_t value, int base);
 char				*ft_uitoa_base(uintmax_t value, int base);
 int					ubase_nbr_count(uintmax_t value, int base);
+char				*ft_intmax_itoa(intmax_t nbr);
 #endif

@@ -1,38 +1,40 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile1                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+         #
+#    By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 15:24:45 by thinguye          #+#    #+#              #
-#    Updated: 2020/09/30 14:15:26 by thinguye         ###   ########.fr        #
+#    Updated: 2021/02/08 07:16:02 by thinguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 SRC_DIR = src/
 SRC_FILES = ft_printf.c \
-			print_char.c \
+			print_c.c \
+			print_s.c \
+			print_d.c \
+			print_x.c \
+			print_o.c \
+			print_p.c \
+			print_u.c \
+			print_f.c \
+			print_zeros.c \
 			read_format.c \
 			call_identifiers.c \
-			print_str.c \
 			check_max_minwth.c \
 			check_precision.c \
-			print_d.c \
-			print_zeros.c \
-			print_hexa.c \
 			ft_itoa_base.c \
-			print_octal.c \
 			ft_putnbr_intmax.c \
-			print_p.c \
 			lenght_modifier.c \
-			print_u.c \
 			unsigned_convs.c \
-			print_percent.c
+			print_percent.c \
+			ft_intmax_itoa.c
 SOURCES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(SRC_FILES:.c=.o)
-HDR = -L includes/ft_printf.h
+HDR = includes/ft_printf.h
 LIB = libft/libft.a
 FLAG = -Wall -Wextra -Werror
 
@@ -43,7 +45,7 @@ $(NAME):
 	@ make -C libft clean
 	@ gcc $(FLAG) -c $(SOURCES) -I $(HDR)
 	@ cp $(LIB) $(NAME)
-	@ ar rc $(NAME) $(OBJ)
+	@ ar rcs $(NAME) $(OBJ)
 
 clean:
 	@rm -rf $(OBJ) includes/ft_printf.h.gch

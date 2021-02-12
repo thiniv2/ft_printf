@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:44:30 by thinguye          #+#    #+#             */
-/*   Updated: 2021/01/26 17:53:21 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/02/05 16:41:07 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
-//#include <assert.h>
+#include <assert.h>
 
 int		main(void)
 {
@@ -31,6 +31,16 @@ int		main(void)
 	min_int = -2147483648;
 	max_int = 2147483647;
 
+	sprintf(s1, "TESTING FLOATS\n");
+	write(1, s1, strlen(s1));
+	
+		float f = 5.35;
+
+	sprintf(s1, "a1: |%f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b1: |%f|\n", f);
+
+/*
 	//TESTING FLOATS
 	sprintf(s1, "TESTING FLOATS\n");
 	write(1, s1, strlen(s1));
@@ -50,7 +60,6 @@ int		main(void)
 	ft_printf("b3: |%10f|\n", f);
 
 
-/*
 	//	TESTING PERCENT
 	sprintf(s1, "\nTESTING PERCENT\n");
 	write(1, s1, strlen(s1));

@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 15:28:02 by thinguye          #+#    #+#             */
-/*   Updated: 2020/07/21 15:09:15 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/02/08 07:04:03 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,23 @@ void		read_arg_type(t_info *info)
 {
 	info->curr_arg = CURR_POS;
 	if (CURR_POS == 'c')
-		print_char(info);
+		print_c(info);
 	else if (CURR_POS == 's')
-		print_str(info);
+		print_s(info);
 	else if ((CURR_POS == 'd') || (CURR_POS == 'i'))
 		print_d(info);
 	else if (CURR_POS == 'x' || CURR_POS == 'X')
-		print_hexa(info);
+		print_x(info);
 	else if (CURR_POS == 'o')
-		print_octal(info);
+		print_o(info);
 	else if (CURR_POS == 'p')
 		print_p(info);
 	else if (CURR_POS == 'u')
 		print_u(info);
 	else if (CURR_POS == '%')
 		print_percent(info);
+	else if (CURR_POS == 'f')
+		print_f(info);
 	info->i++;
 }
 
