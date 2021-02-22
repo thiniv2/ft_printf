@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:44:30 by thinguye          #+#    #+#             */
-/*   Updated: 2021/02/05 16:41:07 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/02/22 07:32:39 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,21 @@ int		main(void)
 	sprintf(s1, "TESTING FLOATS\n");
 	write(1, s1, strlen(s1));
 	
-		float f = 5.35;
-
+	float f = 5.35;
 	sprintf(s1, "a1: |%f|\n", f);
 	write(1, s1, strlen(s1));
 	ft_printf("b1: |%f|\n", f);
 
+	f = 6.123456789;
+	sprintf(s1, "a2: |%f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b2: |%f|\n", f);
+/*	
+	f = 4;
+	sprintf(s1, "a1: |%f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b1: |%f|\n", f);
+*/
 /*
 	//TESTING FLOATS
 	sprintf(s1, "TESTING FLOATS\n");

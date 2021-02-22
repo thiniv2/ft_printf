@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 16:28:41 by thinguye          #+#    #+#             */
-/*   Updated: 2021/02/05 16:48:06 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/02/22 08:19:45 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		*ft_intmax_itoa(intmax_t nbr)
 {
 	intmax_t	i;
 	char		*dst;
-	
+	printf("JD: %jd\n", nbr);
 	i = count_nbr(nbr);
 	if (nbr < 0)
 	{

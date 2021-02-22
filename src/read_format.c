@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_format.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 13:36:36 by thinguye          #+#    #+#             */
-/*   Updated: 2020/12/09 18:44:42 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/02/22 06:09:06 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	set_tmp_values(t_info *info)
 	info->maxwth = 0;
 	info->minwth = 0;
 	info->precision = -1;
-	info->is_dot = 0;
+	info->is_dot = -1;
 	info->is_negative = 0;
 	info->curr_flags[HASH] = '\0';
 	info->curr_flags[ZERO] = '\0';

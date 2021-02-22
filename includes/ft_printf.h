@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:45:01 by thinguye          #+#    #+#             */
-/*   Updated: 2021/02/08 07:05:40 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/02/22 08:19:50 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define CURR_POS info->format[info->i]
 # define NEXT_POS info->format[info->i + 1]
 # define PREV_POS info->format[info->i - 1]
+# define LLONG_MIN  (-__LONG_LONG_MAX__-1LL)
+# define LONG_MIN  (-__LONG_MAX__ -1L)
 
 typedef struct		s_info
 {

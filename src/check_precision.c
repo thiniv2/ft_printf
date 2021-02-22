@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 16:29:05 by thinguye          #+#    #+#             */
-/*   Updated: 2020/09/22 16:29:05 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/02/22 06:09:26 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_precision(t_info *info)
 	{
 		info->precision = 0;
 		info->i++;
-		info->is_dot++;
+		info->is_dot = 1;
 		while (CURR_POS >= '0' && CURR_POS <= '9')
 		{
 			info->precision *= 10;
