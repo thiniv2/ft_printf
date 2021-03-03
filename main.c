@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:44:30 by thinguye          #+#    #+#             */
-/*   Updated: 2021/02/22 07:32:39 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/03/03 17:59:08 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,28 @@ int		main(void)
 	sprintf(s1, "a2: |%f|\n", f);
 	write(1, s1, strlen(s1));
 	ft_printf("b2: |%f|\n", f);
+	
+	f = 1235.12312312389;
+	sprintf(s1, "a3: |%f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b3: |%f|\n", f);
+	
+/*
+	f = 5.123456789;
+	sprintf(s1, "a3: |%5.2f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b3: |%5.2f|\n", f);
+	
+	f = 8.23748;
+	sprintf(s1, "a4: |%15f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b4: |%15f|\n", f);
+	
+	f = -9.127386123;
+	sprintf(s1, "a4: |%15f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b4: |%15f|\n", f);
+*/
 /*	
 	f = 4;
 	sprintf(s1, "a1: |%f|\n", f);

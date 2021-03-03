@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:45:01 by thinguye          #+#    #+#             */
-/*   Updated: 2021/02/22 08:19:50 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/03/03 17:58:12 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct		s_info
 	int				chars_printed;
 	int				zero;
 	int				i;
-	int				maxwth;
 	int				minwth;
 	int				precision;
 	int				is_dot;
@@ -90,5 +89,5 @@ void				ft_putnbr_uintmax(uintmax_t nbr);
 char				*ft_uitoa_base_caps(uintmax_t value, int base);
 char				*ft_uitoa_base(uintmax_t value, int base);
 int					ubase_nbr_count(uintmax_t value, int base);
-char				*ft_intmax_itoa(intmax_t nbr);
+char				*ft_ftoa(long double src, int prec);
 #endif

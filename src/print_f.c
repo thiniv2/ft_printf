@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_f.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 16:03:13 by thinguye          #+#    #+#             */
-/*   Updated: 2021/02/22 08:19:23 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/03/03 17:55:30 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static long double		get_modifier(t_info *info)
 	return ((long double)nbr);
 }
 
-long double		round_nbr(t_info *info, long double nbr)
+long double		get_decimal(t_info *info, long double nbr)
 {
 	long double		factor;
 	int				count;
@@ -44,21 +44,18 @@ long double		round_nbr(t_info *info, long double nbr)
 	return (nbr);
 }
 
+/*
+** TODO: fix if given value is negative,
+** fix precision and width flags
+*/
+
 void			print_f(t_info *info)
 {
-	/*
-	printf("flags: %s\n", info->curr_flags);
-	printf("modifs: %s\n", info->curr_modifiers);
-	printf("arg: %c\n", info->curr_arg);
-	*/
 	long double nbr;
 	char		*str;
-	int			count;
 
-	count = 0;
 	nbr = get_modifier(info);
-	nbr = round_nbr(info, nbr);
-	printf("modif: %Lf\n", nbr);
-	str = ft_intmax_itoa((long double)nbr);
+	nbr = get_decimal(info, nbr);
+	str = ft_ftoa(nbr, info->precision);
 	write(1, str, ft_strlen(str));
 }
