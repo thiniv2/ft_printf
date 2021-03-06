@@ -34,6 +34,7 @@ typedef struct		s_info
 	int				i;
 	int				minwth;
 	int				precision;
+	int				f_prec;
 	int				is_dot;
 	int				is_negative;
 	char			*format;

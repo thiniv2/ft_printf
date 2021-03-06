@@ -22,7 +22,7 @@ int		main(void)
 	long long		ll;
 	int				a;
 	int				b;
-	char			*s1[90];
+	char			s1[90];
 	char			*str;
 
 	ll = 9223372036854775807;
@@ -49,28 +49,25 @@ int		main(void)
 	write(1, s1, strlen(s1));
 	ft_printf("b3: |%f|\n", f);
 	
-/*
-	f = 5.123456789;
-	sprintf(s1, "a3: |%5.2f|\n", f);
+	f = 15.123456789;
+	sprintf(s1, "a3: |%15f|\n", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b3: |%5.2f|\n", f);
-	
-	f = 8.23748;
-	sprintf(s1, "a4: |%15f|\n", f);
+	ft_printf("b3: |%15f|\n", f);
+
+	f = 123.123456789;
+	sprintf(s1, "a4: |%-15f|\n", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b4: |%15f|\n", f);
-	
-	f = -9.127386123;
-	sprintf(s1, "a4: |%15f|\n", f);
+	ft_printf("b4: |%-15f|\n", f);
+
+	f = 1641.123456;
+	sprintf(s1, "a5: |%.4f|\n", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b4: |%15f|\n", f);
-*/
-/*	
-	f = 4;
-	sprintf(s1, "a1: |%f|\n", f);
+	ft_printf("b5: |%.4f|\n", f);
+
+	f = 64.123456789;
+	sprintf(s1, "a6: |%10.4f|\n", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b1: |%f|\n", f);
-*/
+	ft_printf("b6: |%10.4f|\n", f);
 /*
 	//TESTING FLOATS
 	sprintf(s1, "TESTING FLOATS\n");

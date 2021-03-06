@@ -16,6 +16,7 @@ void	set_tmp_values(t_info *info)
 {
 	info->minwth = 0;
 	info->precision = -1;
+	info->f_prec = 0;
 	info->is_dot = -1;
 	info->is_negative = 0;
 	info->curr_flags[HASH] = '\0';

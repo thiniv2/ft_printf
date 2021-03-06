@@ -89,6 +89,13 @@ int		modify_s(t_info *info, int len)
 	return (diff);
 }
 
+int	modify_f(t_info *info, int len)
+{
+	if (info->minwth > len)
+		return (info->minwth - len);
+	return (0);
+}
+
 void	print_minwth(t_info *info, int len)
 {
 	int		diff;
@@ -102,6 +109,8 @@ void	print_minwth(t_info *info, int len)
 		diff = modify_ox(info, len);
 	else if (info->curr_arg == 's' || info->curr_arg == 'c')
 		diff = modify_s(info, len);
+	else if (info->curr_arg == 'f')
+		diff = modify_f(info, len);
 	while (diff-- > 0)
 	{
 		write(1, " ", 1);
