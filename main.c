@@ -60,14 +60,20 @@ int		main(void)
 	ft_printf("b4: |%-15f|\n", f);
 
 	f = 1641.123456;
-	sprintf(s1, "a5: |%.4f|\n", f);
+	sprintf(s1, "a5: |%.1f|\n", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b5: |%.4f|\n", f);
+	ft_printf("b5: |%.1f|\n", f);
+
+	f = 1641.123456;
+	sprintf(s1, "a6: |%.0f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b6: |%.0f|\n", f);
+
 
 	f = 64.123456789;
-	sprintf(s1, "a6: |%10.4f|\n", f);
+	sprintf(s1, "a7: |%10.5f|\n", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b6: |%10.4f|\n", f);
+	ft_printf("b7: |%10.5f|\n", f);
 /*
 	//TESTING FLOATS
 	sprintf(s1, "TESTING FLOATS\n");

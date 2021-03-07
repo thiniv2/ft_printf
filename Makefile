@@ -45,7 +45,7 @@ all: $(NAME)
 $(NAME):
 	@ make -C libft
 	@ make -C libft clean
-	@ gcc $(FLAG) -c $(SOURCES) -I $(HDR)
+	@ gcc $(FLAG) -c $(SOURCES) $(HDR)
 	@ cp $(LIB) $(NAME)
 	@ ar rcs $(NAME) $(OBJ)
 

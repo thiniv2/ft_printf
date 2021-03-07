@@ -47,13 +47,13 @@ long double		get_decimal(t_info *info, long double nbr)
 
 static void		print_front(t_info *info, char *str)
 {
-	size_t		len;
+	size_t		i;
 
-	len = 0;
-	while (len <= ft_strlen(str) && str[len - 1] != '.')
-		len++;
-	info->chars_printed += len;
-	write(1, str, len);
+	i = 0;
+	while (i <= ft_strlen(str) && str[i] != '.')
+		i++;
+	info->chars_printed += i;
+	write(1, str, i);
 }
 
 static void		print_decimals(t_info *info, char *str)
@@ -67,6 +67,8 @@ static void		print_decimals(t_info *info, char *str)
 	else
 		len = 6;
 	//printf("len: %d | prec: %d | f_prec: %d\n", len, info->precision, info->f_prec);
+	if (info->f_prec != 0)
+		write(1, ".", 1);
 	while (str[i] != '.')
 		i++;
 	i++;
