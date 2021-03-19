@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_max_minwth.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 13:13:22 by thinguye          #+#    #+#             */
-/*   Updated: 2020/11/02 07:56:50 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/03/19 07:49:55 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,9 @@ int		modify_s(t_info *info, int len)
 
 int	modify_f(t_info *info, int len)
 {
-	if (info->minwth > len)
+	if (info->minwth > (info->front_len + info->f_prec) && info->f_prec > 0)
+		return (info->minwth - (info->front_len + info->f_prec));
+	else if (info->minwth > len)
 		return (info->minwth - len);
 	return (0);
 }

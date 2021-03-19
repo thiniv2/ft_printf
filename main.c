@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:44:30 by thinguye          #+#    #+#             */
-/*   Updated: 2021/03/03 17:59:08 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/03/19 07:52:56 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,29 +65,16 @@ int		main(void)
 	ft_printf("b5: |%.4f|\n", f);
 
 	f = 64.123456789;
-	sprintf(s1, "a6: |%10.4f|\n", f);
+	sprintf(s1, "a6: |%9.4f|\n", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b6: |%10.4f|\n", f);
+	ft_printf("b6: |%9.4f|\n", f);
+	
+	f = 123123123.9;
+	sprintf(s1, "a7: |%-4.2f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b7: |%-4.2f|\n", f);
+
 /*
-	//TESTING FLOATS
-	sprintf(s1, "TESTING FLOATS\n");
-	write(1, s1, strlen(s1));
-
-	float f = 5.35;
-
-	sprintf(s1, "a1: |%f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b1: |%f|\n", f);
-
-	sprintf(s1, "a2: |%.3f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b2: |%.3f|\n", f);
-
-	sprintf(s1, "a3: |%10f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b3: |%10f|\n", f);
-
-
 	//	TESTING PERCENT
 	sprintf(s1, "\nTESTING PERCENT\n");
 	write(1, s1, strlen(s1));

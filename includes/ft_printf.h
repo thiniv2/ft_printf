@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:45:01 by thinguye          #+#    #+#             */
-/*   Updated: 2021/03/03 17:58:12 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/03/19 07:44:55 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct		s_info
 	int				f_prec;
 	int				is_dot;
 	int				is_negative;
+	int				front_len;
 	char			*format;
 	char			*arguments;
 	char			*modifiers;
