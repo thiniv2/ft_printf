@@ -6,7 +6,7 @@
 /*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:44:30 by thinguye          #+#    #+#             */
-/*   Updated: 2021/03/03 17:59:08 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/04/01 19:45:32 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		main(void)
 	i = 142;
 	min_int = -2147483648;
 	max_int = 2147483647;
-
+/*
 	sprintf(s1, "TESTING FLOATS\n");
 	write(1, s1, strlen(s1));
 	
@@ -71,29 +71,16 @@ int		main(void)
 
 
 	f = 64.123456789;
-	sprintf(s1, "a7: |%10.5f|\n", f);
+	sprintf(s1, "a6: |%9.4f|\n", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b7: |%10.5f|\n", f);
+	ft_printf("b6: |%9.4f|\n", f);
+	
+	f = 123123123.9;
+	sprintf(s1, "a7: |%-4.2f|\n", f);
+	write(1, s1, strlen(s1));
+	ft_printf("b7: |%-4.2f|\n", f);
+*/
 /*
-	//TESTING FLOATS
-	sprintf(s1, "TESTING FLOATS\n");
-	write(1, s1, strlen(s1));
-
-	float f = 5.35;
-
-	sprintf(s1, "a1: |%f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b1: |%f|\n", f);
-
-	sprintf(s1, "a2: |%.3f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b2: |%.3f|\n", f);
-
-	sprintf(s1, "a3: |%10f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b3: |%10f|\n", f);
-
-
 	//	TESTING PERCENT
 	sprintf(s1, "\nTESTING PERCENT\n");
 	write(1, s1, strlen(s1));
@@ -114,8 +101,8 @@ int		main(void)
 	write(1, s1, strlen(s1));
 	ft_printf("b4: |%06%|\n");
 */
-/*
 
+/*
 //	TESTING STR
 	sprintf(s1, "\nTESTING STR\n");
 	write(1, s1, strlen(s1));
@@ -152,6 +139,12 @@ int		main(void)
 	write(1, s1, strlen(s1));
 	ft_printf("b6: |%-13s|\n", str);
 
+//	TEST 7
+	sprintf(s1, "a7: |%-0.13s|\n", str);
+	write(1, s1, strlen(s1));
+	ft_printf("b7: |%-0.13s|\n", str);
+*/
+/*
 
 //  TESTING D
 	sprintf(s1, "\nTESTING D\n");
@@ -201,6 +194,8 @@ int		main(void)
 	write(1, s1, strlen(s1));
 	ft_printf("b9: |%0.5d|\n", i);
 
+*/
+
 
 // TESTING xX
 
@@ -247,6 +242,19 @@ int		main(void)
 	write(1, s1, strlen(s1));
 	ft_printf("b8: |%#07.x|\n", i);
 
+
+//	TEST 9
+	sprintf(s1, "a9: |%#-08x|\n", 42);
+	write(1, s1, strlen(s1));
+	ft_printf("b9: |%#-08x|\n", 42);
+
+//	TEST 10
+	sprintf(s1, "a10: |%#08x|\n", 42);
+	write(1, s1, strlen(s1));
+	ft_printf("b19: |%#08x|\n", 42);
+
+
+/*
 	// TESTING OCTAL
 	i = 42;
 
@@ -288,14 +296,19 @@ int		main(void)
 	sprintf(s1, "a6: |%#5.o|\n", i);
 	write(1, s1, strlen(s1));
 	ft_printf("b6: |%#5.o|\n", i);
-
-	sprintf(s1, "A percent: |%%|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("B percent: |%%|\n", i);
-
-	sprintf(s1, "A percent 2: |%5%|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("B percent 2: |%5%|\n", i);
 */
-	return (0);
+/*
+	sprintf(s1, "a1: |%%|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b1: |%%|\n", i);
+
+	sprintf(s1, "a2: |%5%|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b2: |%5%|\n", i);
+
+	sprintf(s1, "a3: |%-5%|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b3: |%-5%|\n", i);
+
+*/	return (0);
 }

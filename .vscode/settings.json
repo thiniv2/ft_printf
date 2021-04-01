@@ -1,0 +1,15 @@
+{
+	"files.associations": {
+		"*.sql": "sql",
+		"__functional_03": "cpp",
+		"functional": "cpp",
+		"memory": "cpp",
+		"optional": "cpp",
+		"string_view": "cpp",
+		"system_error": "cpp",
+		"__hash_table": "c",
+		"mutex": "c",
+		"unordered_map": "c",
+		"vector": "c"
+	}
+}

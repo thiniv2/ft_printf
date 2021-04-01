@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_x.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 10:56:24 by thinguye          #+#    #+#             */
-/*   Updated: 2021/02/08 06:57:16 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/04/01 19:47:54 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void			print_x(t_info *info)
 		info->zero = 1;
 		info->chars_printed--;
 	}
+	if (info->curr_flags[HASH] && info->precision < 0)
+		info->minwth -= 2;
 	if (!info->curr_flags[MINUS])
 		print_minwth(info, ubase_nbr_count(value, 16));
 	handle_hash_x(info, value);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_zeros.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 14:23:14 by thinguye          #+#    #+#             */
-/*   Updated: 2020/11/02 07:52:49 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/04/01 19:53:09 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	print_zeros(t_info *info, int len)
 			info->minwth--;
 		info->minwth--;
 	}
+
+	if (info->curr_flags[HASH] && info->precision < 0)
+		diff -= 2;
 
 	while (diff > 0)
 	{

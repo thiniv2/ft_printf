@@ -6,7 +6,7 @@
 /*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 16:03:13 by thinguye          #+#    #+#             */
-/*   Updated: 2021/03/03 17:55:30 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/04/01 19:33:20 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ long double		get_decimal(t_info *info, long double nbr)
 
 static void		print_front(t_info *info, char *str)
 {
-	size_t		i;
+	int		len;
 
-	i = 0;
-	while (i <= ft_strlen(str) && str[i] != '.')
-		i++;
-	info->chars_printed += i;
-	write(1, str, i);
+	len = 0;
+	while (len <= (int)ft_strlen(str) && str[len - 1] != '.')
+		len++;
+	info->chars_printed += len;
+	write(1, str, len);
 }
 
 static void		print_decimals(t_info *info, char *str)
@@ -66,9 +66,6 @@ static void		print_decimals(t_info *info, char *str)
 		len = info->f_prec;
 	else
 		len = 6;
-	//printf("len: %d | prec: %d | f_prec: %d\n", len, info->precision, info->f_prec);
-	if (info->f_prec != 0)
-		write(1, ".", 1);
 	while (str[i] != '.')
 		i++;
 	i++;
@@ -81,10 +78,15 @@ static void		print_decimals(t_info *info, char *str)
 	}
 }
 
-/*
-** TODO: fix if given value is negative,
-** fix precision and width flags
-*/
+static void		check_front_len(t_info *info, char *str)
+{
+	int		len;
+
+	len = 0;
+	while (len <= (int)ft_strlen(str) && str[len - 1] != '.')
+		len++;
+	info->front_len = len;
+}
 
 void			print_f(t_info *info)
 {
@@ -94,11 +96,11 @@ void			print_f(t_info *info)
 	nbr = get_modifier(info);
 	nbr = get_decimal(info, nbr);
 	str = ft_ftoa(nbr, info->precision);
+	check_front_len(info, str);
 	if (!info->curr_flags[MINUS])
 		print_minwth(info, ft_strlen(str));
 	print_front(info, str);
 	print_decimals(info, str);
-//	write(1, str, ft_strlen(str));
 	if (info->curr_flags[MINUS])
 		print_minwth(info, ft_strlen(str));
 }
