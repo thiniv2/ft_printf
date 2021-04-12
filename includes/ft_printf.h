@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:45:01 by thinguye          #+#    #+#             */
-/*   Updated: 2021/03/19 07:44:55 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/04/02 16:02:02 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void				print_f(t_info *info);
 void				print_s(t_info *info);
 void				print_zeros(t_info *info, int len);
 void				print_percent(t_info *info);
-
 int					ft_printf(const char *format, ...);
 int					base_nbr_count(intmax_t value, int base);
 char				*ft_itoa_base(intmax_t value, int base);
@@ -82,6 +81,7 @@ void				print_minwth(t_info *info, int len);
 void				check_precision(t_info *info);
 void				ft_putnbr_intmax(intmax_t nbr);
 void				check_modifier(t_info *info);
+int					modify_ox(t_info *info, int len);
 int					nbr_count(intmax_t nbr, t_info *info);
 intmax_t			print_plus_minus(intmax_t nbr, t_info *info);
 intmax_t			set_modifier(t_info *info);

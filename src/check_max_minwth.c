@@ -3,56 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   check_max_minwth.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 13:13:22 by thinguye          #+#    #+#             */
-/*   Updated: 2021/03/19 07:49:55 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/04/02 16:03:08 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		modify_ox(t_info *info, int len)
-{
-	int		diff;
-
-	diff = 0;
-	if (info->zero)
-		return (info->minwth - len);
-	if (info->precision > 0)
-	{
-		if (info->precision < len)
-			diff = info->minwth - len;
-		else
-			diff = info->minwth - info->precision;
-	}
-	else if (info->curr_flags[ZERO] && !info->curr_flags[MINUS])
-		diff = 0;
-	else
-		diff = info->minwth - len;
-	if (info->curr_flags[HASH])
-	{
-		if (info->curr_arg == 'x' || info->curr_arg == 'X')
-			diff--;
-		diff--;
-	}
-	if (info->curr_flags[ZERO] && info->precision == 0)
-	{
-		diff = info->minwth;
-		if (info->curr_flags[HASH])
-			diff -= 2;
-		diff -= len;
-	}
-	return (diff);
-}
-
 int		modify_d(t_info *info, int len)
 {
-	int		diff;
+	int	diff;
 
 	diff = 0;
-	if (info->zero != info->curr_flags[MINUS] ||
-        (info->curr_flags[ZERO] && info->precision <= 0))
+	if (info->zero != info->curr_flags[MINUS]
+		|| (info->curr_flags[ZERO] && info->precision <= 0))
 		return (info->minwth - len);
 	if (info->precision > 0)
 	{
@@ -74,7 +40,7 @@ int		modify_d(t_info *info, int len)
 
 int		modify_s(t_info *info, int len)
 {
-	int		diff;
+	int	diff;
 
 	diff = 0;
 	if (info->precision == 0)
@@ -89,7 +55,7 @@ int		modify_s(t_info *info, int len)
 	return (diff);
 }
 
-int	modify_f(t_info *info, int len)
+int		modify_f(t_info *info, int len)
 {
 	if (info->minwth > (info->front_len + info->f_prec) && info->f_prec > 0)
 		return (info->minwth - (info->front_len + info->f_prec));
@@ -100,14 +66,13 @@ int	modify_f(t_info *info, int len)
 
 void	print_minwth(t_info *info, int len)
 {
-	int		diff;
+	int	diff;
 
 	diff = 0;
-	if (info->curr_arg == 'd' || info->curr_arg == 'i'
-	|| info->curr_arg == 'u')
+	if (info->curr_arg == 'd' || info->curr_arg == 'i' || info->curr_arg == 'u')
 		diff = modify_d(info, len);
-	else if (info->curr_arg == 'o' || info->curr_arg == 'p' ||
-			info->curr_arg == 'x' || info->curr_arg == 'X')
+	else if (info->curr_arg == 'o' || info->curr_arg == 'p'
+		|| info->curr_arg == 'x' || info->curr_arg == 'X')
 		diff = modify_ox(info, len);
 	else if (info->curr_arg == 's' || info->curr_arg == 'c')
 		diff = modify_s(info, len);

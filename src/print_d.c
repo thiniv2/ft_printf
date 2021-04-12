@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   print_d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 20:16:09 by thinguye          #+#    #+#             */
-/*   Updated: 2020/11/02 07:25:42 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/04/02 16:33:36 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int					nbr_count(intmax_t nbr, t_info *info)
+int			nbr_count(intmax_t nbr, t_info *info)
 {
-	int		res;
+	int	res;
 
 	res = 0;
 	if (info->zero == 1)
@@ -36,7 +36,7 @@ int					nbr_count(intmax_t nbr, t_info *info)
 	return (res);
 }
 
-intmax_t			print_plus_minus(intmax_t nbr, t_info *info)
+intmax_t	print_plus_minus(intmax_t nbr, t_info *info)
 {
 	if (info->curr_flags[PLUS] && nbr >= 0)
 	{
@@ -51,22 +51,22 @@ intmax_t			print_plus_minus(intmax_t nbr, t_info *info)
 	return (nbr);
 }
 
-void				print_d(t_info *info)
+void		print_d(t_info *info)
 {
-	intmax_t		nbr;
-	int				len;
+	intmax_t	nbr;
+	int			len;
 
 	nbr = set_modifier(info);
 	if (nbr == 0 && info->precision == 0)
 		info->zero = 1;
 	len = nbr_count(nbr, info);
-	info->is_negative = (nbr < 0) ? 1 : 0;
+	if (nbr < 0)
+		info->is_negative = 1;
 	if (!info->curr_flags[MINUS])
 		print_minwth(info, len);
 	nbr = print_plus_minus(nbr, info);
 	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS]
-        && info->precision > 0)
-    	|| (info->precision > 0))
+			&& info->precision > 0) || (info->precision > 0))
 		print_zeros(info, len);
 	if (info->zero == 0)
 		ft_putnbr_intmax(nbr);

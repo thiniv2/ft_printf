@@ -6,7 +6,7 @@
 /*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 10:56:24 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/01 19:47:54 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/04/12 18:00:45 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,16 @@ static void		handle_hash_x(t_info *info, uintmax_t value)
 		else
 			write(1, "0X", 2);
 		info->chars_printed += 2;
-        info->minwth += 2;
+		info->minwth += 2;
 	}
+}
+
+char			*check_caps(t_info *info, uintmax_t value)
+{
+	if (info->curr_arg == 'x')
+		return (ft_itoa_base(value, 16));
+	else
+		return (ft_itoa_base_caps(value, 16));
 }
 
 void			print_x(t_info *info)
@@ -31,10 +39,7 @@ void			print_x(t_info *info)
 	char		*res;
 
 	value = set_unsigned_modifier(info);
-	if (info->curr_arg == 'x')
-		res = ft_itoa_base(value, 16);
-	else
-		res = ft_itoa_base_caps(value, 16);
+	res = check_caps(info, value);
 	if (value == 0 && info->precision == 0)
 	{
 		info->zero = 1;

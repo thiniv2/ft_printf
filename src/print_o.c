@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_o.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:07:51 by thinguye          #+#    #+#             */
-/*   Updated: 2021/02/08 06:58:05 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/04/12 18:09:37 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void		handle_hash_o(t_info *info, uintmax_t value)
+static void	handle_hash_o(t_info *info, uintmax_t value)
 {
 	if (info->curr_flags[HASH] && value != 0)
 	{
@@ -21,11 +21,11 @@ static void		handle_hash_o(t_info *info, uintmax_t value)
 	}
 }
 
-void			print_o(t_info *info)
+void	print_o(t_info *info)
 {
-	uintmax_t	value;
-	int			len;
-	char		*str;
+	uintmax_t value;
+	int len;
+	char *str;
 
 	value = set_unsigned_modifier(info);
 	str = ft_uitoa_base(value, 8);
@@ -40,10 +40,9 @@ void			print_o(t_info *info)
 	if (!info->curr_flags[MINUS])
 		print_minwth(info, len);
 	handle_hash_o(info, value);
-	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS])
-		|| info->precision > 0)
+	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS]) || info->precision > 0)
 		print_zeros(info, len);
-	if (info->zero == 0)
+	//if (info->zero == 0)
 		ft_putstr(str);
 	info->chars_printed += len;
 	if (info->curr_flags[MINUS])

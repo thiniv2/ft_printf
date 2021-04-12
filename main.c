@@ -6,7 +6,7 @@
 /*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:44:30 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/01 19:45:32 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/04/12 18:19:21 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		main(void)
 	i = 142;
 	min_int = -2147483648;
 	max_int = 2147483647;
+
 /*
 	sprintf(s1, "TESTING FLOATS\n");
 	write(1, s1, strlen(s1));
@@ -79,7 +80,7 @@ int		main(void)
 	sprintf(s1, "a7: |%-4.2f|\n", f);
 	write(1, s1, strlen(s1));
 	ft_printf("b7: |%-4.2f|\n", f);
-*/
+	
 /*
 	//	TESTING PERCENT
 	sprintf(s1, "\nTESTING PERCENT\n");
@@ -100,10 +101,17 @@ int		main(void)
 	sprintf(s1, "a4: |%06%|\n");
 	write(1, s1, strlen(s1));
 	ft_printf("b4: |%06%|\n");
-*/
+	
+	sprintf(s1, "a5: |%5%|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b5: |%5%|\n", i);
 
-/*
+	sprintf(s1, "a6: |%-5%|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b6: |%-5%|\n", i);
+
 //	TESTING STR
+
 	sprintf(s1, "\nTESTING STR\n");
 	write(1, s1, strlen(s1));
 
@@ -143,8 +151,6 @@ int		main(void)
 	sprintf(s1, "a7: |%-0.13s|\n", str);
 	write(1, s1, strlen(s1));
 	ft_printf("b7: |%-0.13s|\n", str);
-*/
-/*
 
 //  TESTING D
 	sprintf(s1, "\nTESTING D\n");
@@ -180,28 +186,27 @@ int		main(void)
 	ft_printf("b6: |%-05.d|\n", i);
 
 //  TEST 7
-    sprintf(s1, "a7: |%07.d|\n", i);
+    sprintf(s1, "a7: |%07.d|\n", -42);
 	write(1, s1, strlen(s1));
-	ft_printf("b7: |%07.d|\n", i);
+	ft_printf("b7: |%07.d|\n", -42);
 
 //  TEST 8
-    sprintf(s1, "a8: |%07.1d|\n", i);
+    sprintf(s1, "a8: |%07.1d|\n", 0);
 	write(1, s1, strlen(s1));
-	ft_printf("b8: |%07.1d|\n", i);
+	ft_printf("b8: |%07.1d|\n", 0);
 
 //  TEST 9
-    sprintf(s1, "a9: |%0.5d|\n", i);
+    sprintf(s1, "a9: |%0.5d|\n", 0);
 	write(1, s1, strlen(s1));
-	ft_printf("b9: |%0.5d|\n", i);
-
+	ft_printf("b9: |%0.5d|\n", 0);
 */
-
-
+/*
 // TESTING xX
 
 	sprintf(s1, "\nTESTING xX\n");
 	write(1, s1, strlen(s1));
 	i = 42;
+
 //	TEST 1
 	sprintf(s1, "a1: |%5.4x|\n", i);
 	write(1, s1, strlen(s1));
@@ -242,7 +247,6 @@ int		main(void)
 	write(1, s1, strlen(s1));
 	ft_printf("b8: |%#07.x|\n", i);
 
-
 //	TEST 9
 	sprintf(s1, "a9: |%#-08x|\n", 42);
 	write(1, s1, strlen(s1));
@@ -252,15 +256,11 @@ int		main(void)
 	sprintf(s1, "a10: |%#08x|\n", 42);
 	write(1, s1, strlen(s1));
 	ft_printf("b19: |%#08x|\n", 42);
-
-
-/*
+*/
 	// TESTING OCTAL
-	i = 42;
-
+	i = 52;
 	sprintf(s1, "TESTING OCTAL\n");
 	write(1, s1, strlen(s1));
-
 
 //	TEST 1
 	sprintf(s1, "a1: |%o|\n", i);
@@ -283,9 +283,9 @@ int		main(void)
 	ft_printf("b4: |%#6o|\n", i);
 
 //	TEST 5
-	sprintf(s1, "a5: |%#-4.o|\n", i);
+	sprintf(s1, "a5: |%#-4.o|\n", 0);
 	write(1, s1, strlen(s1));
-	ft_printf("b5: |%#-4.o|\n", i);
+	ft_printf("b5: |%#-4.o|\n", 0);
 
 //	TEST 6
 	sprintf(s1, "a6: |%#5.4o|\n", i);
@@ -293,22 +293,19 @@ int		main(void)
 	ft_printf("b6: |%#5.4o|\n", i);
 
 //	TEST 7
-	sprintf(s1, "a6: |%#5.o|\n", i);
+	sprintf(s1, "a7: |%#5.o|\n", i);
 	write(1, s1, strlen(s1));
-	ft_printf("b6: |%#5.o|\n", i);
-*/
-/*
-	sprintf(s1, "a1: |%%|\n", i);
+	ft_printf("b7: |%#5.o|\n", i);
+	
+//	TEST 8
+	sprintf(s1, "a8: |%#-8o|\n", i);
 	write(1, s1, strlen(s1));
-	ft_printf("b1: |%%|\n", i);
+	ft_printf("b8: |%#-8o|\n", i);
+	
+//	TEST 9
+	sprintf(s1, "a9: |%#8o|\n", i);
+	write(1, s1, strlen(s1));
+	ft_printf("b9: |%#8o|\n", i);
 
-	sprintf(s1, "a2: |%5%|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b2: |%5%|\n", i);
-
-	sprintf(s1, "a3: |%-5%|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b3: |%-5%|\n", i);
-
-*/	return (0);
+	return (0);
 }

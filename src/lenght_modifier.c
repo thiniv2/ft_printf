@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   lenght_modifier.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:50:07 by thinguye          #+#    #+#             */
-/*   Updated: 2021/02/05 16:49:00 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/04/02 16:13:16 by thini-42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-intmax_t set_modifier(t_info *info)
+intmax_t	set_modifier(t_info *info)
 {
-	intmax_t value;
+	intmax_t	value;
 
 	if (ft_strcmp(info->curr_modifiers, "h") == 0)
 		value = (short)va_arg(info->args, int);
@@ -31,12 +31,12 @@ intmax_t set_modifier(t_info *info)
 	return ((intmax_t)value);
 }
 
-uintmax_t set_unsigned_modifier(t_info *info)
+uintmax_t	set_unsigned_modifier(t_info *info)
 {
-	intmax_t value;
+	intmax_t	value;
+
 	if (ft_strcmp(info->curr_modifiers, "h") == 0)
 		value = (unsigned short)va_arg(info->args, unsigned int);
-
 	else if (ft_strcmp(info->curr_modifiers, "hh") == 0)
 		value = (unsigned char)va_arg(info->args, unsigned int);
 	else if (ft_strcmp(info->curr_modifiers, "l") == 0)
@@ -50,10 +50,10 @@ uintmax_t set_unsigned_modifier(t_info *info)
 	return ((uintmax_t)value);
 }
 
-void check_modifier(t_info *info)
+void		check_modifier(t_info *info)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
