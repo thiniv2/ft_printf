@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_o.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini <thinguye@student.42.fi>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:07:51 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/12 18:09:37 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/04/12 09:19:06 by thini            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ void	print_o(t_info *info)
 	if (info->curr_flags[HASH])
 		info->precision--;
 	if (!info->curr_flags[MINUS])
+	{
+		if (info->curr_flags[HASH] && info->precision != -1)
+			len--;
 		print_minwth(info, len);
+	}
 	handle_hash_o(info, value);
 	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS]) || info->precision > 0)
 		print_zeros(info, len);
@@ -46,7 +50,11 @@ void	print_o(t_info *info)
 		ft_putstr(str);
 	info->chars_printed += len;
 	if (info->curr_flags[MINUS])
+	{
+		if (info->curr_flags[HASH] && info->precision != -1)
+			len--;
 		print_minwth(info, len);
+	}
 	if (value > 0)
 		free(str);
 }

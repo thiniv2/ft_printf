@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini <thinguye@student.42.fi>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:44:30 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/12 18:19:21 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/04/12 08:59:40 by thini            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,7 +258,7 @@ int		main(void)
 	ft_printf("b19: |%#08x|\n", 42);
 */
 	// TESTING OCTAL
-	i = 52;
+	i = 0;
 	sprintf(s1, "TESTING OCTAL\n");
 	write(1, s1, strlen(s1));
 
