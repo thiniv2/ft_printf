@@ -6,7 +6,7 @@
 /*   By: thini <thinguye@student.42.fi>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:44:30 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/12 08:59:40 by thini            ###   ########.fr       */
+/*   Updated: 2021/04/12 11:30:56 by thini            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,12 +200,12 @@ int		main(void)
 	write(1, s1, strlen(s1));
 	ft_printf("b9: |%0.5d|\n", 0);
 */
-/*
+
 // TESTING xX
 
 	sprintf(s1, "\nTESTING xX\n");
 	write(1, s1, strlen(s1));
-	i = 42;
+	i = 123;
 
 //	TEST 1
 	sprintf(s1, "a1: |%5.4x|\n", i);
@@ -213,9 +213,9 @@ int		main(void)
 	ft_printf("b1: |%5.4x|\n", i);
 
 //	TEST 2
-	sprintf(s1, "a2: |%#-10.6x|\n", i);
+	sprintf(s1, "a2: |%#-10.8x|\n", i);
 	write(1, s1, strlen(s1));
-	ft_printf("b2: |%#-10.6x|\n", i);
+	ft_printf("b2: |%#-10.8x|\n", i);
 
 //	TEST 3
 	sprintf(s1, "a3: |%#-.4x|\n", i);
@@ -233,9 +233,9 @@ int		main(void)
 	ft_printf("b5: |%04.0x|\n", i);
 
 //	TEST 6
-	sprintf(s1, "a6: |%05x|\n", i);
+	sprintf(s1, "a6: |%0-8.x|\n", i);
 	write(1, s1, strlen(s1));
-	ft_printf("b6: |%05x|\n", i);
+	ft_printf("b6: |%0-8.x|\n", i);
 
 //	TEST 7
 	sprintf(s1, "a7: |%#-5.6x|\n", i);
@@ -256,9 +256,10 @@ int		main(void)
 	sprintf(s1, "a10: |%#08x|\n", 42);
 	write(1, s1, strlen(s1));
 	ft_printf("b19: |%#08x|\n", 42);
-*/
+
+
 	// TESTING OCTAL
-	i = 0;
+	i = 123;
 	sprintf(s1, "TESTING OCTAL\n");
 	write(1, s1, strlen(s1));
 
@@ -306,6 +307,16 @@ int		main(void)
 	sprintf(s1, "a9: |%#8o|\n", i);
 	write(1, s1, strlen(s1));
 	ft_printf("b9: |%#8o|\n", i);
+
+//	TEST 10
+	sprintf(s1, "a10: |%#8o|\n", 0);
+	write(1, s1, strlen(s1));
+	ft_printf("b10: |%#8o|\n", 0);
+	
+//	TEST 11
+	sprintf(s1, "a11: |%#-4o|\n", 0);
+	write(1, s1, strlen(s1));
+	ft_printf("b11: |%#-4o|\n", 0);
 
 	return (0);
 }

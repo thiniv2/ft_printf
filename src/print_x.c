@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_x.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini <thinguye@student.42.fi>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 10:56:24 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/12 18:00:45 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/04/12 11:14:34 by thini            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ void			print_x(t_info *info)
 {
 	uintmax_t	value;
 	char		*res;
+	int			len;
 
 	value = set_unsigned_modifier(info);
+	len = ubase_nbr_count(value, 16);
 	res = check_caps(info, value);
 	if (value == 0 && info->precision == 0)
 	{
@@ -48,16 +50,24 @@ void			print_x(t_info *info)
 	if (info->curr_flags[HASH] && info->precision < 0)
 		info->minwth -= 2;
 	if (!info->curr_flags[MINUS])
-		print_minwth(info, ubase_nbr_count(value, 16));
+	{
+		if (info->curr_flags[HASH] && info->precision != -1 && value == 0)
+			len--;
+		print_minwth(info, len);
+	}
 	handle_hash_x(info, value);
 	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS])
 		|| info->precision > 0)
-		print_zeros(info, ubase_nbr_count(value, 16));
+		print_zeros(info, len);
 	if (info->zero == 0)
 		ft_putstr(res);
-	info->chars_printed += ubase_nbr_count(value, 16);
+	info->chars_printed += len;
 	if (info->curr_flags[MINUS])
-		print_minwth(info, ubase_nbr_count(value, 16));
+	{
+		if (info->curr_flags[HASH] && info->precision != -1 && value == 0)
+			len--;
+		print_minwth(info, len);
+	}
 	if (value > 0)
 		free(res);
 }
