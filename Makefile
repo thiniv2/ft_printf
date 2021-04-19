@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+         #
+#    By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 15:24:45 by thinguye          #+#    #+#              #
-#    Updated: 2021/04/02 16:02:32 by thini-42         ###   ########.fr        #
+#    Updated: 2021/04/19 12:27:52 by thinguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ all: $(NAME)
 $(NAME):
 	@ make -C libft
 	@ make -C libft clean
-	@ gcc $(FLAG) -c $(SOURCES) $(HDR)
+	@ gcc $(FLAG) -c $(SOURCES) -I $(HDR)
 	@ cp $(LIB) $(NAME)
 	@ ar rcs $(NAME) $(OBJ)
 
@@ -55,6 +55,8 @@ clean:
 	@echo deleted .o files
 
 fclean: clean
-	rm -rf $(NAME) a.out
+	@rm -rf $(NAME) a.out
+	@rm -rf libft/libft.a
+	@echo deleted libraries
 
 re: fclean all

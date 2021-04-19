@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_x.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini <thinguye@student.42.fi>             +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 10:56:24 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/12 11:14:34 by thini            ###   ########.fr       */
+/*   Updated: 2021/04/19 13:34:13 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void		handle_hash_x(t_info *info, uintmax_t value)
 		info->chars_printed += 2;
 		info->minwth += 2;
 	}
+	else if (info->curr_flags[HASH] && value == 0)
+		info->chars_printed++;
 }
 
 char			*check_caps(t_info *info, uintmax_t value)

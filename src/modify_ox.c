@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   modify_ox.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini <thinguye@student.42.fi>             +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 16:01:07 by thini-42          #+#    #+#             */
-/*   Updated: 2021/04/12 11:31:48 by thini            ###   ########.fr       */
+/*   Updated: 2021/04/19 13:08:32 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	modify_ox(t_info *info, int len)
 	int	diff;
 
 	diff = 0;
-	if (!info->precision)
-		len--;
 	if (info->zero)
 		return (info->minwth - len);
 	if (info->precision > 0)
@@ -41,8 +39,10 @@ int	modify_ox(t_info *info, int len)
 		diff = info->minwth - len;
 	if (info->curr_flags[HASH])
 	{
-		if (info->curr_arg == 'x' || info->curr_arg == 'X')
+		if ((info->curr_arg == 'x' || info->curr_arg == 'X') && info->curr_flags[MINUS])
 			diff--;
+		else if ((info->curr_arg == 'x' || info->curr_arg == 'X') && !info->curr_flags[MINUS])
+			diff++;
 		diff--;
 	}
 	if (info->curr_flags[ZERO] && info->precision == 0)
