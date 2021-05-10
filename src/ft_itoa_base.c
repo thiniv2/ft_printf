@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thini <thinguye@student.42.fi>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 11:15:34 by thinguye          #+#    #+#             */
-/*   Updated: 2020/10/13 11:15:34 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/04/22 04:00:31 by thini            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	*ft_itoa_base(intmax_t value, int base)
 	char		*ret;
 	char		*base_str;
 
+	if (value == LONG_MIN || value == LLONG_MIN)
+		return (ft_strdup("9223372036854775808"));
 	if (value == 0)
 		return ("0");
 	len = base_nbr_count(value, base);

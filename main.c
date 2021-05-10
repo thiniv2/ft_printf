@@ -5,19 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/08 14:44:30 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/19 13:36:27 by thinguye         ###   ########.fr       */
+/*   Created: 2021/05/04 10:48:09 by thinguye          #+#    #+#             */
+/*   Updated: 2021/05/10 19:52:51 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
-#include <assert.h>
+#include <string.h>
+#include <stdio.h>
+#include <limits.h>
 
 int main(void)
 {
 	int i;
 	int min_int;
 	int max_int;
+	int		ret1;
+	int		ret2;
 	uintmax_t uintmax;
 	long long ll;
 	int a;
@@ -31,323 +35,745 @@ int main(void)
 	min_int = -2147483648;
 	max_int = 2147483647;
 
-	/*
 	sprintf(s1, "TESTING FLOATS\n");
 	write(1, s1, strlen(s1));
-	
-	float f = 5.35;
-	sprintf(s1, "a1: |%f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b1: |%f|\n", f);
+	float f = 12.45;
 
-	f = 6.123456789;
-	sprintf(s1, "a2: |%f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b2: |%f|\n", f);
-	
-	f = 1235.12312312389;
-	sprintf(s1, "a3: |%f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b3: |%f|\n", f);
-	
-	f = 15.123456789;
-	sprintf(s1, "a3: |%15f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b3: |%15f|\n", f);
-
-	f = 123.123456789;
-	sprintf(s1, "a4: |%-15f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b4: |%-15f|\n", f);
-
-	f = 1641.123456;
-	sprintf(s1, "a5: |%.1f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b5: |%.1f|\n", f);
-
-	f = 1641.123456;
-	sprintf(s1, "a6: |%.0f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b6: |%.0f|\n", f);
-
-
-	f = 64.123456789;
-	sprintf(s1, "a6: |%9.4f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b6: |%9.4f|\n", f);
-	
-	f = 123123123.9;
-	sprintf(s1, "a7: |%-4.2f|\n", f);
-	write(1, s1, strlen(s1));
-	ft_printf("b7: |%-4.2f|\n", f);
-	
-/*
-	//	TESTING PERCENT
-	sprintf(s1, "\nTESTING PERCENT\n");
-	write(1, s1, strlen(s1));
-
-	sprintf(s1, "a1: |%%|\n");
-	write(1, s1, strlen(s1));
-	ft_printf("b1: |%%|\n");
-
-	sprintf(s1, "a2: |%6%|\n");
-	write(1, s1, strlen(s1));
-	ft_printf("b2: |%6%|\n");
-
-	sprintf(s1, "a3: |%-%|\n");
-	write(1, s1, strlen(s1));
-	ft_printf("b3: |%-%|\n");
-
-	sprintf(s1, "a4: |%06%|\n");
-	write(1, s1, strlen(s1));
-	ft_printf("b4: |%06%|\n");
-	
-	sprintf(s1, "a5: |%5%|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b5: |%5%|\n", i);
-
-	sprintf(s1, "a6: |%-5%|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b6: |%-5%|\n", i);
-
-//	TESTING STR
-
-	sprintf(s1, "\nTESTING STR\n");
-	write(1, s1, strlen(s1));
-
-	str = "hello world";
-//	TEST 1
-	sprintf(s1, "a1: |%s|\n", str);
-	write(1, s1, strlen(s1));
-	ft_printf("b1: |%s|\n", str);
-
-
-//	TEST 2
-	sprintf(s1, "a2: |%05.3s|\n", str);
-	write(1, s1, strlen(s1));
-	ft_printf("b2: |%05.3s|\n", str);
-
-//	TEST 3
-	sprintf(s1, "a3: |%016.6s|\n", str);
-	write(1, s1, strlen(s1));
-	ft_printf("b3: |%016.6s|\n", str);
-
-//	TEST 4
-	sprintf(s1, "a4: |%-16.10s|\n", str);
-	write(1, s1, strlen(s1));
-	ft_printf("b4: |%-16.10s|\n", str);
-
-//	TEST 5
-	sprintf(s1, "a5: |%-016.s|\n", str);
-	write(1, s1, strlen(s1));
-	ft_printf("b5: |%-016.s|\n", str);
-
-//	TEST 6
-	sprintf(s1, "a6: |%-13s|\n", str);
-	write(1, s1, strlen(s1));
-	ft_printf("b6: |%-13s|\n", str);
-
-//	TEST 7
-	sprintf(s1, "a7: |%-0.13s|\n", str);
-	write(1, s1, strlen(s1));
-	ft_printf("b7: |%-0.13s|\n", str);
-
-//  TESTING D
-	sprintf(s1, "\nTESTING D\n");
-	write(1, s1, strlen(s1));
 //  TEST 1
-	sprintf(s1, "a1: |%0-8d|\n", i);
+	ret1 =  sprintf(s1, "a1: |%f|", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b1: |%0-8d|\n", i);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b1: |%f|", f);
+	ft_printf(" %d\n", ret2);
 
 //  TEST 2
-    sprintf(s1, "a2: |%.4d|\n", i);
+	ret1 =  sprintf(s1, "a2: |%15f|", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b2: |%.4d|\n", i);
-
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b2: |%15f|", f);
+	ft_printf(" %d\n", ret2);
+	
 //  TEST 3
-    sprintf(s1, "a3: |%05.d|\n", i);
+	ret1 =  sprintf(s1, "a3: |%-10f|", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b3: |%05.d|\n", i);
-
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b3: |%-10f|", f);
+	ft_printf(" %d\n", ret2);
+	
 //  TEST 4
-    sprintf(s1, "a4: |%#05.6d|\n", i);
+	ret1 =  sprintf(s1, "a4: |%.1f|", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b4: |%#05.6d|\n", i);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b4: |%.1f|", f);
+	ft_printf(" %d\n", ret2);
 
 //  TEST 5
-    sprintf(s1, "a5: |%-5d|\n", i);
+	ret1 =  sprintf(s1, "a5: |%9.4f|", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b5: |%-5d|\n", i);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b5: |%9.4f|", f);
+	ft_printf(" %d\n", ret2);
 
 //  TEST 6
-    sprintf(s1, "a6: |%-05.d|\n", i);
+	ret1 =  sprintf(s1, "a6: |%5.f|", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b6: |%-05.d|\n", i);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b6: |%5.f|", f);
+	ft_printf(" %d\n", ret2);
 
 //  TEST 7
-    sprintf(s1, "a7: |%07.d|\n", -42);
+	ret1 =  sprintf(s1, "a7: |%-4.2f|", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b7: |%07.d|\n", -42);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b7: |%-4.2f|", f);
+	ft_printf(" %d\n", ret2);
 
 //  TEST 8
-    sprintf(s1, "a8: |%07.1d|\n", 0);
+	ret1 =  sprintf(s1, "a8: |%013f|", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b8: |%07.1d|\n", 0);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b8: |%013f|", f);
+	ft_printf(" %d\n", ret2);
 
 //  TEST 9
-    sprintf(s1, "a9: |%0.5d|\n", 0);
+	ret1 =  sprintf(s1, "a9: |%010.1f|", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b9: |%0.5d|\n", 0);
-*/
-
-	// TESTING xX
-
-	int		d1;
-	int		d2;
-
-	sprintf(s1, "\nTESTING xX\n");
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b9: |%010.1f|", f);
+	ft_printf(" %d\n", ret2);
+	
+//  TEST 10
+	ret1 =  sprintf(s1, "a10: |%.0f|", f);
 	write(1, s1, strlen(s1));
-	i = 1243;
-
-	//	TEST 1
-	sprintf(s1, "a1: |%5.4x|\n", i);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b10: |%.0f|", f);
+	ft_printf(" %d\n", ret2);
+	
+//  TEST 11
+	ret1 =  sprintf(s1, "a11: |%05.f|", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b1: |%5.4x|\n", i);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b11: |%05.f|", f);
+	ft_printf(" %d\n", ret2);
 
-	//	TEST 2
-	sprintf(s1, "a2: |%#-10.8x|\n", i);
+//  TEST 12
+	ret1 =  sprintf(s1, "a12: |%-15.4f|", f);
 	write(1, s1, strlen(s1));
-	ft_printf("b2: |%#-10.8x|\n", i);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b12: |%-15.4f|", f);
+	ft_printf(" %d\n", ret2);
+	
+//  TEST 13
+	ret1 =  sprintf(s1, "a13: |%-05.f|", f);
+	write(1, s1, strlen(s1));
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b13: |%-05.f|", f);
+	ft_printf(" %d\n", ret2);
 
-	//	TEST 3
-	sprintf(s1, "a3: |%#-.4x|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b3: |%#-.4x|\n", i);
+// 	//	TESTING PERCENT
+// 	sprintf(s1, "\nTESTING PERCENT\n");
+// 	write(1, s1, strlen(s1));
 
-	//	TEST 4
-	sprintf(s1, "a4: |%0-5x|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b4: |%0-5x|\n", i);
+// //  TEST 1
+// 	ret1 =  sprintf(s1, "a1: |%|");
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b1: |%|");
+// 	ft_printf(" %d\n", ret2);
 
-	//	TEST 5
-	sprintf(s1, "a5: |%04.0x|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b5: |%04.0x|\n", i);
 
-	//	TEST 6
-	sprintf(s1, "a6: |%0-8.x|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b6: |%0-8.x|\n", i);
+// //  TEST 2
+// 	ret1 =  sprintf(s1, "a2: |%%|");
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b2: |%%|");
+// 	ft_printf(" %d\n", ret2);
 
-	//	TEST 7
-	sprintf(s1, "a7: |%#-5.6x|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b7: |%#-5.6x|\n", i);
 
-	//	TEST 8
-	sprintf(s1, "a8: |%#07.x|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b8: |%#07.x|\n", i);
+// //  TEST 3
+// 	ret1 =  sprintf(s1, "a3: |%5%|");
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b3: |%5%|");
+// 	ft_printf(" %d\n", ret2);
 
-	//	TEST 9
-	sprintf(s1, "a9: |%#-08x|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b9: |%#-08x|\n", i);
 
-	//	TEST 10
-	sprintf(s1, "a10: |%#08x|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b10: |%#08x|\n", i);
+// //  TEST 4
+// 	ret1 =  sprintf(s1, "a4: |%-%|");
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b4: |%-%|");
+// 	ft_printf(" %d\n", ret2);
 
-	//	TEST 11
-	sprintf(s1, "a11: |%#14x|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b11: |%#14x|\n", i);
+// //  TEST 5
+// 	ret1 =  sprintf(s1, "a5: |%06%|");
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b5: |%06%|");
+// 	ft_printf(" %d\n", ret2);
 
-	//	TEST 12
-	d1 = sprintf(s1, "a12: @moulitest: %#.x %#.0x\n", 0, 0);
-	write(1, s1, strlen(s1));
-	d2 = ft_printf("b12: @moulitest: %#.x %#.0x\n", 0, 0);
-	ft_printf("d1: %d | d2: %d\n", d1, d2);
+// //  TEST 6
+// 	ret1 =  sprintf(s1, "a6: |%-5%|");
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b6: |%-5%|");
+// 	ft_printf(" %d\n", ret2);
 
-//	TEST 13
-	d1 = sprintf(s1, "a13: @moulitest: %5.x %5.0x\n", 0, 0);
-	write(1, s1, strlen(s1));
-	d2 = ft_printf("b13: @moulitest: %5.x %5.0x\n", 0, 0);
-	ft_printf("d1: %d | d2: %d\n", d1, d2);
+// //	TESTING STR
 
-//	TEST 14
-	d1 = sprintf(s1, "a14: |%#x|\n", 0);
-	write(1, s1, strlen(s1));
-	d2 = ft_printf("b14: |%#x|\n", 0, 0);
-	ft_printf("d1: %d | d2: %d\n", d1, d2);
+// 	sprintf(s1, "\nTESTING STR\n");
+// 	write(1, s1, strlen(s1));
 
-/*
-	// TESTING OCTAL
-	i = 123;
-	sprintf(s1, "TESTING OCTAL\n");
-	write(1, s1, strlen(s1));
+// 	str = "hello world";
+// //	TEST 1
+// 	sprintf(s1, "a1: |%s|\n", str);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf("b1: |%s|\n", str);
 
-	//	TEST 1
-	sprintf(s1, "a1: |%o|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b1: |%o|\n", i);
 
-	//	TEST 2
-	sprintf(s1, "a2: |%05o|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b2: |%05o|\n", i);
+// //	TEST 2
+// 	sprintf(s1, "a2: |%05.3s|\n", str);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf("b2: |%05.3s|\n", str);
 
-	//	TEST 3
-	sprintf(s1, "a3: |%-2.6o|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b3: |%-2.6o|\n", i);
+// //	TEST 3
+// 	sprintf(s1, "a3: |%016.6s|\n", str);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf("b3: |%016.6s|\n", str);
 
-	//	TEST 4
-	sprintf(s1, "a4: |%#6o|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b4: |%#6o|\n", i);
+// //	TEST 4
+// 	sprintf(s1, "a4: |%-16.10s|\n", str);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf("b4: |%-16.10s|\n", str);
 
-	//	TEST 5
-	sprintf(s1, "a5: |%#-4.o|\n", 0);
-	write(1, s1, strlen(s1));
-	ft_printf("b5: |%#-4.o|\n", 0);
+// //	TEST 5
+// 	sprintf(s1, "a5: |%-016.s|\n", str);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf("b5: |%-016.s|\n", str);
 
-	//	TEST 6
-	sprintf(s1, "a6: |%#5.4o|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b6: |%#5.4o|\n", i);
+// //	TEST 6
+// 	sprintf(s1, "a6: |%-13s|\n", str);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf("b6: |%-13s|\n", str);
 
-	//	TEST 7
-	sprintf(s1, "a7: |%#5.o|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b7: |%#5.o|\n", i);
+// //	TEST 7
+// 	sprintf(s1, "a7: |%-0.13s|\n", str);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf("b7: |%-0.13s|\n", str);
 
-	//	TEST 8
-	sprintf(s1, "a8: |%#-8o|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b8: |%#-8o|\n", i);
 
-	//	TEST 9
-	sprintf(s1, "a9: |%#8o|\n", i);
-	write(1, s1, strlen(s1));
-	ft_printf("b9: |%#8o|\n", i);
+// //  TESTING D
 
-	//	TEST 10
-	sprintf(s1, "a10: |%#8o|\n", 0);
-	write(1, s1, strlen(s1));
-	ft_printf("b10: |%#8o|\n", 0);
+// 	i = 42;
+// 	sprintf(s1, "\nTESTING D\n");
+// 	write(1, s1, strlen(s1));
 
-	//	TEST 11
-	sprintf(s1, "a11: |%#-4o|\n", 0);
-	write(1, s1, strlen(s1));
-	ft_printf("b11: |%#-4o|\n", 0);
+// //  TEST 1
+// 	ret1 =  sprintf(s1, "a1: |%0-8d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b1: |%0-8d|", i);
+// 	ft_printf(" %d\n", ret2);
 
-	//	TEST 12
-	sprintf("a12: @moulitest: %.o %.0o\n", 0, 0);
-	write(1, s1, strlen(s1));
-	ft_printf("b12: @moulitest: %.o %.0o\n", 0, 0);
-*/	
+// //  TEST 2
+// 	ret1 =  sprintf(s1, "a2: |%.4d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b2: |%0.4d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 3
+// 	ret1 =  sprintf(s1, "a3: |%05.d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b3: |%05.d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 4
+// 	ret1 =  sprintf(s1, "a4: |%+05.6d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b4: |%+05.6d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 5
+// 	ret1 =  sprintf(s1, "a5: |%-5d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b5: |%-5d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 6
+// 	ret1 =  sprintf(s1, "a6: |%-05.d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b6: |%-05.d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 7
+// 	ret1 =  sprintf(s1, "a7: |%07.d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b7: |%07.d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 8
+// 	ret1 =  sprintf(s1, "a8: |%07.1d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b8: |%07.1d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 9
+// 	ret1 =  sprintf(s1, "a9: |%0.5d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b9: |%0.5d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 10
+// 	ret1 =  sprintf(s1, "a10: |%0+5d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b10: |%0+5d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 11
+// 	ret1 =  sprintf(s1, "a11: |%5d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b11: |%5d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 12
+// 	ret1 =  sprintf(s1, "a12: |%-10.5d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b12: |%-10.5d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 13
+// 	ret1 =  sprintf(s1, "a13: |%-+10.5d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b13: |%-+10.5d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 14
+// 	ret1 =  sprintf(s1, "a14: |%03.5d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b14: |%03.5d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 15
+// 	ret1 =  sprintf(s1, "a15: |% 03d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b15: |% 03d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 16
+// 	ret1 =  sprintf(s1, "a16: |% +d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b16: |% +d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 17
+// 	ret1 =  sprintf(s1, "a17: |%lld|", LLONG_MIN);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b17: |%lld|", LLONG_MIN);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 18
+// 	ret1 =  sprintf(s1, "a18: |%lld|", LLONG_MAX);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b18: |%lld|", LLONG_MAX);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 19
+// 	ret1 =  sprintf(s1, "a19: |%-+06.2d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b19: |%-+06.2d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 20
+// 	ret1 =  sprintf(s1, "a20: |%-+06.0d|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b20: |%-+06.0d|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 21
+// 	ret1 =  sprintf(s1, "a21: |%+10.5d|", 4242);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b21: |%+10.5d|", 4242);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 22
+// 	ret1 =  sprintf(s1, "a22: |%04.2d|", -1);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b21: |%04.2d|", -1);
+// 	ft_printf(" %d\n", ret2);
+
+// //  TEST 23
+// 	ret1 =  sprintf(s1, "a23: |%.d|", 0);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b23: |%.d|", 0);
+// 	ft_printf(" %d\n", ret2);
+
+// 	// TESTING xX
+
+// 	sprintf(s1, "\nTESTING xX\n");
+// 	write(1, s1, strlen(s1));
+// 	i = 0;
+
+// //	TEST 1
+// 	ret1 = sprintf(s1, "a1: |%5.4x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b1: |%5.4x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 2
+// 	ret1 = sprintf(s1, "a2: |%#-14.8x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b2: |%#-14.8x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 3
+// 	ret1 = sprintf(s1, "a3: |%#-.4x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b3: |%#-.4x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 4
+// 	ret1 = sprintf(s1, "a4: |%0-5x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b4: |%0-5x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 5
+// 	ret1 = sprintf(s1, "a5: |%04.0x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b5: |%04.0x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 6
+// 	ret1 = sprintf(s1, "a6: |%0-8.x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b6: |%0-8.x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 7
+// 	ret1 = sprintf(s1, "a7: |%#-5.6x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b7: |%#-5.6x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 8
+// 	ret1 = sprintf(s1, "a8: |%#07.x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b8: |%#07.x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 9
+// 	ret1 = sprintf(s1, "a9: |%#-08x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b9: |%#-08x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 10
+// 	ret1 = sprintf(s1, "a10: |%#08x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b10: |%#08x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 11
+// 	ret1 = sprintf(s1, "a11: |%#6x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b11: |%#6x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 12
+// 	ret1 = sprintf(s1, "a12: |%#.0x| %#.0x|", i, i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b12: |%#.0x| %#.0x|", i, i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 13
+// 	ret1 = sprintf(s1, "a13: |%5.x %5.0x|", i, i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b13: |%5.x %5.0x|", i, i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 14
+// 	ret1 = sprintf(s1, "a14: |%#x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b14: |%#x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 15
+// 	ret1 = sprintf(s1, "a15: |%#.x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b15: |%#.x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 16
+// 	ret1 = sprintf(s1, "a16: |%#x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b16: |%#x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 17
+// 	ret1 = sprintf(s1, "a17: |%#.0x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b17: |%#.0x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 18
+// 	ret1 = sprintf(s1, "a18: |%#.x %#.0x|", 0, i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b18: |%#.x %#.0x|", 0, i);
+// 	ft_printf(" %d\n", ret2);
+	
+// //	TEST 19
+// 	ret1 = sprintf(s1, "a19: |%#-08x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b19: |%#-08x|", i);
+// 	ft_printf(" %d\n", ret2);
+	
+// //	TEST 20
+// 	ret1 = sprintf(s1, "a20: |%-#08x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b20: |%-#08x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 21
+// 	ret1 = sprintf(s1, "a21: |%#-8.x|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b21: |%#-8.x|", i);
+// 	ft_printf(" %d\n", ret2);
+
+
+// //	TESTING OCTAL WITHOUT ZERO
+// 	sprintf(s1, "TESTING OCTAL\n");
+// 	write(1, s1, strlen(s1));
+// 	i = 42;
+
+// //	TEST 1
+// 	ret1 = sprintf(s1, "a1: |%o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b1: |%o|", i);
+// 	ft_printf(" %d\n", ret2);
+	
+// //	TEST 2
+// 	ret1 = sprintf(s1, "a2: |%05o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b2: |%05o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 3
+// 	ret1 = sprintf(s1, "a3: |%-2.6o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b3: |%-2.6o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 4
+// 	ret1 = sprintf(s1, "a4: |%#6o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b4: |%#6o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 5
+// 	ret1 = sprintf(s1, "a5: |%#-4.o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b5: |%#-4.o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 6
+// 	ret1 = sprintf(s1, "a6: |%#5.4o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b6: |%#5.4o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 7
+// 	ret1 = sprintf(s1, "a7: |%#5.o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b7: |%#5.o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 8
+// 	ret1 = sprintf(s1, "a8: |%#-8o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b8: |%#-8o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 9
+// 	ret1 = sprintf(s1, "a9: |%#8o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b9: |%#8o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 10
+// 	ret1 = sprintf(s1, "a10: |%#-8.0o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b10: |%#-8.0o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 11
+// 	ret1 = sprintf(s1, "a11: |%#-4o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b11: |%#-4o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 12
+// 	ret1 = sprintf(s1, "a12: |%#.o| |%.0o|", i, i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b12: |%#.o| |%.0o|", i, i);
+// 	ft_printf(" %d\n", ret2);
+
+// // TESTING OCTAL
+// 	sprintf(s1, "TESTING OCTAL WITH ZEROS\n");
+// 	write(1, s1, strlen(s1));
+// 	i = 0;
+
+// //	TEST 1
+// 	ret1 = sprintf(s1, "a1: |%o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b1: |%o|", i);
+// 	ft_printf(" %d\n", ret2);
+	
+// //	TEST 2
+// 	ret1 = sprintf(s1, "a2: |%05o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b2: |%05o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 3
+// 	ret1 = sprintf(s1, "a3: |%-2.6o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b3: |%-2.6o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 4
+// 	ret1 = sprintf(s1, "a4: |%#6o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b4: |%#6o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 5
+// 	ret1 = sprintf(s1, "a5: |%#-4.o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b5: |%#-4.o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 6
+// 	ret1 = sprintf(s1, "a6: |%#5.4o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b6: |%#5.4o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 7
+// 	ret1 = sprintf(s1, "a7: |%#5.o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b7: |%#5.o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 8
+// 	ret1 = sprintf(s1, "a8: |%#-8o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b8: |%#-8o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 9
+// 	ret1 = sprintf(s1, "a9: |%#8o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b9: |%#8o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 10
+// 	ret1 = sprintf(s1, "a10: |%#-8.0o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b10: |%#-8.0o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 11
+// 	ret1 = sprintf(s1, "a11: |%#-4o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b11: |%#-4o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 12
+// 	ret1 = sprintf(s1, "a12: |%#.o| |%.0o|", i, i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b12: |%#.o| |%.0o|", i, i);
+// 	ft_printf(" %d\n", ret2);
+	
+// //	TEST 13
+// 	ret1 = sprintf(s1, "a13: |%#5.o| |%5.0o|", i, i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b13: |%#5.o| |%5.0o|", i, i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 14
+// 	ret1 = sprintf(s1, "a14: |%#.0o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b14: |%#.0o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 15
+// 	ret1 = sprintf(s1, "a15: |%#07.o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b15: |%#07.o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 16
+// 	ret1 = sprintf(s1, "a16: |%#-8.o|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b16: |%#-8.o|", i);
+// 	ft_printf(" %d\n", ret2);
+
+
+// // TESTING UNSIGNED
+// 	i = 0;
+// 	sprintf(s1, "TESTING UNSIGNED\n");
+// 	write(1, s1, strlen(s1));
+
+// //	TEST 1
+// 	sprintf(s1, "a1: |%u|\n", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf("b1: |%u|\n", i);
+	
+// //	TEST 2
+// 	sprintf(s1, "a2: |%05u|\n", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf("b2: |%05u|\n", i);
+
+// //	TEST 3
+// 	sprintf(s1, "a3: |%-5u|\n", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf("b3: |%-5u|\n", i);
+
+// //	TEST 4
+// 	sprintf(s1, "a4: |%+02u|\n", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf("b4: |%+02u|\n", i);
+
 	return (0);
 }

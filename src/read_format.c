@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 13:36:36 by thinguye          #+#    #+#             */
-/*   Updated: 2021/03/19 07:42:18 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/04/27 18:17:31 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	set_tmp_values(t_info *info)
 	info->is_dot = -1;
 	info->is_negative = 0;
 	info->front_len = 0;
+	info->zero = 0;
 	info->curr_flags[HASH] = '\0';
 	info->curr_flags[ZERO] = '\0';
 	info->curr_flags[MINUS] = '\0';
@@ -39,7 +40,7 @@ void	call_readers(t_info *info)
 	check_minwth(info);
 	check_precision(info);
 	check_modifier(info);
-	read_arg_type(info);
+	read_arg_type(info);	
 }
 
 void	read_format(t_info *info)

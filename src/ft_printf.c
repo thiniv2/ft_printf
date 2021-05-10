@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 15:47:12 by thinguye          #+#    #+#             */
-/*   Updated: 2020/07/20 13:56:31 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/10 19:38:13 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ void	init(t_info *info)
 	info->modifiers = "lhL";
 }
 
-int		ft_printf(const char *format, ...)
+/*
+** doesn't return chars_printed if (info) is freed on linux
+*/
+
+int	ft_printf(const char *format, ...)
 {
 	t_info		*info;
 
@@ -32,11 +36,11 @@ int		ft_printf(const char *format, ...)
 	if (format)
 	{
 		va_start(info->args, format);
-		info->format = (char*)format;
+		info->format = (char *)format;
 		init(info);
 		read_format(info);
 		va_end(info->args);
-		free(info);
+	//	free(info);
 	}
 	return (info->chars_printed);
 }

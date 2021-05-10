@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 10:56:24 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/19 13:34:13 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/10 15:31:25 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 static void		handle_hash_x(t_info *info, uintmax_t value)
 {
-	if (info->curr_flags[HASH] && value != 0)
+	if (info->curr_flags[HASH] && value > 0)
 	{
 		if (info->curr_arg == 'x')
 			write(1, "0x", 2);
 		else
 			write(1, "0X", 2);
 		info->chars_printed += 2;
-		info->minwth += 2;
-	}
-	else if (info->curr_flags[HASH] && value == 0)
-		info->chars_printed++;
+	}	
 }
 
 char			*check_caps(t_info *info, uintmax_t value)
@@ -42,34 +39,26 @@ void			print_x(t_info *info)
 	int			len;
 
 	value = set_unsigned_modifier(info);
-	len = ubase_nbr_count(value, 16);
+	len = ubase_nbr_count(value, 16);	
 	res = check_caps(info, value);
-	if (value == 0 && info->precision == 0)
+	if (info->is_dot == 1 && value == 0 && info->precision <= 0)
 	{
 		info->zero = 1;
 		info->chars_printed--;
 	}
-	if (info->curr_flags[HASH] && info->precision < 0)
+	if (info->curr_flags[HASH] && value > 0)
 		info->minwth -= 2;
 	if (!info->curr_flags[MINUS])
-	{
-		if (info->curr_flags[HASH] && info->precision != -1 && value == 0)
-			len--;
 		print_minwth(info, len);
-	}
 	handle_hash_x(info, value);
 	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS])
-		|| info->precision > 0)
+	|| info->precision > 0)
 		print_zeros(info, len);
 	if (info->zero == 0)
 		ft_putstr(res);
 	info->chars_printed += len;
 	if (info->curr_flags[MINUS])
-	{
-		if (info->curr_flags[HASH] && info->precision != -1 && value == 0)
-			len--;
 		print_minwth(info, len);
-	}
 	if (value > 0)
 		free(res);
 }

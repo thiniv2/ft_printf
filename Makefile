@@ -6,7 +6,7 @@
 #    By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 15:24:45 by thinguye          #+#    #+#              #
-#    Updated: 2021/04/19 12:27:52 by thinguye         ###   ########.fr        #
+#    Updated: 2021/04/27 15:41:09 by thinguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ all: $(NAME)
 $(NAME):
 	@ make -C libft
 	@ make -C libft clean
-	@ gcc $(FLAG) -c $(SOURCES) -I $(HDR)
+	@ gcc $(FLAG) -c $(SOURCES) $(HDR)
 	@ cp $(LIB) $(NAME)
 	@ ar rcs $(NAME) $(OBJ)
 

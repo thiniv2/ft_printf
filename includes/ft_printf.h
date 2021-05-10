@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:45:01 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/02 16:02:02 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/05/10 19:39:58 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define LLONG_MIN  (-__LONG_LONG_MAX__-1LL)
 # define LONG_MIN  (-__LONG_MAX__ -1L)
 
-typedef struct		s_info
+typedef struct s_info
 {
 	int				chars_printed;
 	int				zero;
@@ -48,7 +48,7 @@ typedef struct		s_info
 	va_list			args;
 }					t_info;
 
-typedef enum		e_flags
+typedef enum e_flags
 {
 	HASH = 0,
 	ZERO = 1,
@@ -66,6 +66,7 @@ void				print_u(t_info *info);
 void				print_f(t_info *info);
 void				print_s(t_info *info);
 void				print_zeros(t_info *info, int len);
+void				print_zeros_d(t_info *info, int len);
 void				print_percent(t_info *info);
 int					ft_printf(const char *format, ...);
 int					base_nbr_count(intmax_t value, int base);

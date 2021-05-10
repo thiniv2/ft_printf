@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 15:28:02 by thinguye          #+#    #+#             */
-/*   Updated: 2021/02/08 07:04:03 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/10 14:44:29 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,12 @@ void		read_arg_type(t_info *info)
 		print_percent(info);
 	else if (CURR_POS == 'f')
 		print_f(info);
-	info->i++;
+	else
+	{
+		write(1, &CURR_POS, 1);
+		info->chars_printed++;
+	}
+	info->i++;	
 }
 
 void		check_flags(t_info *info)

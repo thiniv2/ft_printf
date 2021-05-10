@@ -3,19 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   print_zeros.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 14:23:14 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/01 19:53:09 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/05/10 17:50:08 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	print_zeros(t_info *info, int len)
+void	print_zeros_d(t_info *info, int len)
 {
 	int		diff;
 
+	diff = 0;
+	len += 0;
+//	ft_putnbr(info->front_len);
+//	ft_putnbr(info->f_prec);
+	if (info->curr_flags[ZERO] && !info->curr_flags[MINUS])
+	{
+		if (info->is_dot == 1)
+		{
+			diff = (info->front_len + info->f_prec); // 3 + 1
+			if (info->f_prec != 0) // check if prints dot
+				diff++;
+		}
+		else
+			diff = info->front_len + 7;
+		info->minwth -= diff; // 4 - 3
+	//	ft_putnbr(diff);
+		while (info->minwth > 0)
+		{
+			write(1, "0", 1);
+			info->chars_printed++;
+			info->minwth--;
+		}
+	}
+}
+
+void	print_zeros(t_info *info, int len)
+{
+	int		diff;
 	if (info->precision == 0)
 		return ;
 	if (info->precision > 0)
@@ -26,17 +54,6 @@ void	print_zeros(t_info *info, int len)
 	}
 	else
 		diff = info->minwth - len;
-	if ((info->curr_arg == 'x' || info->curr_arg == 'X' || info->curr_arg == 'o') && 
-		info->curr_flags[HASH])
-	{
-		if (info->curr_arg == 'x' || info->curr_arg == 'X')
-			info->minwth--;
-		info->minwth--;
-	}
-
-	if (info->curr_flags[HASH] && info->precision < 0)
-		diff -= 2;
-
 	while (diff > 0)
 	{
 		write(1, "0", 1);

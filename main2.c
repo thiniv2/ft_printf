@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amurtone <amurtone@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 12:51:35 by amurtone          #+#    #+#             */
-/*   Updated: 2020/09/01 10:15:40 by amurtone         ###   ########.fr       */
+/*   Updated: 2021/04/27 14:41:27 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int main(void)
     p2 = p1;
     
     setvbuf(stdout, NULL, _IONBF, 0);
-
 
     // // Testing Char
     // printf("TESTING CHAR\n");
@@ -109,6 +108,7 @@ int main(void)
     // ret = printf("Origi printf: PTR test -> %.15p\n", p1);
     // printf("ret value OG= %d\n", ret);
 
+/*
     // // TESTING xX
 
      ret = ft_printf("My ft_printf: xX test -> %x\n", 42424242);
@@ -135,7 +135,7 @@ int main(void)
      printf("ret value FT= %d\n", ret);
      ret = printf("Origi printf: xX test -> %#20X\n", 42424242);
      printf("ret value OG= %d\n", ret);
-
+*/
     // // // TESTING OCTAL
 
 //    ret = ft_printf("My ft_printf: Octal test -> %o\n", 4242);

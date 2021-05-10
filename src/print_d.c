@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_d.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 20:16:09 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/02 16:33:36 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/05/04 10:47:08 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,35 +42,58 @@ intmax_t	print_plus_minus(intmax_t nbr, t_info *info)
 	{
 		write(1, "+", 1);
 		info->chars_printed++;
+		info->minwth--;
 	}
 	else if (nbr < 0)
 	{
 		write(1, "-", 1);
 		nbr *= -1;
+		if (info->precision > 0)
+			info->minwth--;
+		info->chars_printed++;
 	}
 	return (nbr);
+}
+
+void		check_space(t_info *info)
+{
+	if (info->curr_flags[SPACE] && info->is_negative == 0 && !info->curr_flags[PLUS])
+	{
+		write(1, " ", 1);
+		info->minwth--;
+		info->chars_printed++;
+	}
 }
 
 void		print_d(t_info *info)
 {
 	intmax_t	nbr;
 	int			len;
+	char		*str;
 
 	nbr = set_modifier(info);
 	if (nbr == 0 && info->precision == 0)
+	{
 		info->zero = 1;
+		info->chars_printed--;
+	}
 	len = nbr_count(nbr, info);
 	if (nbr < 0)
 		info->is_negative = 1;
-	if (!info->curr_flags[MINUS])
+	check_space(info);
+	if ((!info->curr_flags[MINUS] && info->is_dot == 1)
+	|| (info->curr_flags[ZERO] && info->is_dot == 0 && !info->curr_flags[MINUS])
+	|| (info->minwth && !info->curr_flags[ZERO] && !info->curr_flags[MINUS]))
 		print_minwth(info, len);
 	nbr = print_plus_minus(nbr, info);
-	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS]
-			&& info->precision > 0) || (info->precision > 0))
+	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS])
+	|| (info->is_dot == 1 && !info->curr_flags[ZERO] && !info->curr_flags[MINUS])
+	|| (info->precision > len && info->curr_flags[MINUS]))
 		print_zeros(info, len);
+	str = ft_itoa_base(nbr, 10);
 	if (info->zero == 0)
-		ft_putnbr_intmax(nbr);
-	info->chars_printed += len;
+		ft_putstr(str);
+	info->chars_printed += ft_strlen(str);
 	if (info->curr_flags[MINUS])
 		print_minwth(info, len);
 }
