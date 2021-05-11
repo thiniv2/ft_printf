@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 13:36:36 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/27 18:17:31 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:41:45 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,24 @@ void	call_readers(t_info *info)
 	check_minwth(info);
 	check_precision(info);
 	check_modifier(info);
-	read_arg_type(info);	
+	read_arg_type(info);
 }
 
 void	read_format(t_info *info)
 {
-	while (CURR_POS)
+	while (info->format[info->i])
 	{
-		if (CURR_POS == '%' && NEXT_POS == '%')
+		if (info->format[info->i] == '%' && info->format[info->i + 1] == '%')
 		{
-			write(1, &CURR_POS, 1);
+			write(1, &info->format[info->i], 1);
 			info->i += 2;
 			info->chars_printed++;
 		}
-		else if (CURR_POS == '%')
+		else if (info->format[info->i] == '%')
 			call_readers(info);
 		else
 		{
-			write(1, &CURR_POS, 1);
+			write(1, &info->format[info->i], 1);
 			info->chars_printed++;
 			info->i++;
 		}

@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:45:01 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/10 19:39:58 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:08:21 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,8 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <unistd.h>
+# include <limits.h>
 # include "../libft/libft.h"
-
-# include <stdio.h> // DELETE
-
-# define CURR_POS info->format[info->i]
-# define NEXT_POS info->format[info->i + 1]
-# define PREV_POS info->format[info->i - 1]
-# define LLONG_MIN  (-__LONG_LONG_MAX__-1LL)
-# define LONG_MIN  (-__LONG_MAX__ -1L)
 
 typedef struct s_info
 {
@@ -83,6 +76,9 @@ void				check_precision(t_info *info);
 void				ft_putnbr_intmax(intmax_t nbr);
 void				check_modifier(t_info *info);
 int					modify_ox(t_info *info, int len);
+int					modify_d(t_info *info, int len);
+void				print_decimals(t_info *info, char *str);
+long double			get_decimal(t_info *info, long double nbr);
 int					nbr_count(intmax_t nbr, t_info *info);
 intmax_t			print_plus_minus(intmax_t nbr, t_info *info);
 intmax_t			set_modifier(t_info *info);

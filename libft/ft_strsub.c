@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thien <thien@student.42.fr>                +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:52:31 by thinguye          #+#    #+#             */
-/*   Updated: 2020/01/16 08:46:49 by thien            ###   ########.fr       */
+/*   Updated: 2021/05/11 17:30:27 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	mem = NULL;
 	if (s)
 	{
-		if (!(mem = ft_strnew(len)))
-			return (NULL);
+		mem = ft_strnew(len);
 		while (i < len)
 		{
 			mem[i] = s[start];

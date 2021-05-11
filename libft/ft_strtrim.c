@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:22:15 by thinguye          #+#    #+#             */
-/*   Updated: 2019/11/12 19:57:50 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:30:51 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ char	*ft_strtrim(char const *s)
 		i = ft_strlen(s) - 1;
 		while ((s[i] == ' ') || (s[i] == '\n') || (s[i] == '\t'))
 			end = (i-- - 1);
-		if (!(str = ft_strsub(s, start, (end - start) + 1)))
-			return (NULL);
+		str = ft_strsub(s, start, (end - start) + 1);
 		return (str);
 	}
 	return (ft_strdup(s));

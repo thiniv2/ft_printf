@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:07:51 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/10 19:38:07 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:46:04 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,31 +21,42 @@ static void	handle_hash_o(t_info *info, uintmax_t value)
 	}
 }
 
+void	check_zero(t_info *info, uintmax_t value)
+{
+	if (!info->curr_flags[HASH] && info->is_dot == 1
+		&& value == 0 && info->precision <= 0)
+	{
+		info->zero = 1;
+		info->chars_printed--;
+	}
+}
+
+int	check_hash(t_info *info, uintmax_t value, int len)
+{
+	if (info->curr_flags[HASH] && value > 0)
+	{
+		len++;
+		info->chars_printed--;
+	}
+	return (len);
+}
+
 void	print_o(t_info *info)
 {
-	uintmax_t 	value;
+	uintmax_t	value;
 	int			len;
 	char		*str;
 
 	value = set_unsigned_modifier(info);
 	str = ft_itoa_base(value, 8);
 	len = ft_strlen(str);
-	if (!info->curr_flags[HASH] && info->is_dot == 1
-	&& value == 0 && info->precision <= 0)
-	{
-		info->zero = 1;
-		info->chars_printed--;
-	}
-	if (info->curr_flags[HASH] && value > 0)
-	{
-		len++;
-		info->chars_printed--;
-	}
+	check_zero(info, value);
+	len = check_hash(info, value, len);
 	if (!info->curr_flags[MINUS])
 		print_minwth(info, len);
 	handle_hash_o(info, value);
 	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS])
-	|| info->precision > 0)
+		|| info->precision > 0)
 		print_zeros(info, len);
 	if (info->zero == 0)
 		ft_putstr(str);

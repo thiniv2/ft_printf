@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 15:53:07 by thinguye          #+#    #+#             */
-/*   Updated: 2019/11/01 14:12:56 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:24:28 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_putendl(char const *s)
 {
 	if (s)
 	{
-		ft_putstr((char*)s);
+		ft_putstr((char *)s);
 		ft_putchar('\n');
 	}
 }

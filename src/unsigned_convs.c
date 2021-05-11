@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unsigned_convs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini <thinguye@student.42.fi>             +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/25 16:52:58 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/12 09:25:44 by thini            ###   ########.fr       */
+/*   Updated: 2021/05/11 16:22:45 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putnbr_uintmax(uintmax_t nbr)
 	ft_putchar(nbr % 10 + '0');
 }
 
-int		unsigned_nbr_count(uintmax_t nbr, t_info *info)
+int	unsigned_nbr_count(uintmax_t nbr, t_info *info)
 {
 	int		res;
 
@@ -38,7 +38,7 @@ int		unsigned_nbr_count(uintmax_t nbr, t_info *info)
 	return (res);
 }
 
-int		ubase_nbr_count(uintmax_t value, int base)
+int	ubase_nbr_count(uintmax_t value, int base)
 {
 	int	len;
 
@@ -63,7 +63,7 @@ char	*ft_uitoa_base(uintmax_t value, int base)
 		return ("0");
 	len = ubase_nbr_count(value, base);
 	base_str = "0123456789abcdef";
-	ret = (char*)malloc(sizeof(char) * len + 1);
+	ret = (char *)malloc(sizeof(char) * len + 1);
 	ret[len--] = '\0';
 	while (value != 0)
 	{
@@ -84,7 +84,7 @@ char	*ft_uitoa_base_caps(uintmax_t value, int base)
 		return ("0");
 	len = ubase_nbr_count(value, base);
 	base_str = "0123456789ABCDEF";
-	ret = (char*)malloc(sizeof(char) * len + 1);
+	ret = (char *)malloc(sizeof(char) * len + 1);
 	ret[len--] = '\0';
 	while (value != 0)
 	{

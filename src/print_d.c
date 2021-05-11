@@ -6,13 +6,13 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 20:16:09 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/04 10:47:08 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:31:02 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int			nbr_count(intmax_t nbr, t_info *info)
+int	nbr_count(intmax_t nbr, t_info *info)
 {
 	int	res;
 
@@ -55,9 +55,10 @@ intmax_t	print_plus_minus(intmax_t nbr, t_info *info)
 	return (nbr);
 }
 
-void		check_space(t_info *info)
+void	check_space(t_info *info)
 {
-	if (info->curr_flags[SPACE] && info->is_negative == 0 && !info->curr_flags[PLUS])
+	if (info->curr_flags[SPACE] && info->is_negative == 0
+		&& !info->curr_flags[PLUS])
 	{
 		write(1, " ", 1);
 		info->minwth--;
@@ -65,7 +66,24 @@ void		check_space(t_info *info)
 	}
 }
 
-void		print_d(t_info *info)
+intmax_t	print_front(t_info *info, intmax_t nbr, int len)
+{
+	if ((!info->curr_flags[MINUS] && info->is_dot == 1)
+		|| (info->curr_flags[ZERO] && info->is_dot == 0
+			&& !info->curr_flags[MINUS])
+		|| (info->minwth && !info->curr_flags[ZERO]
+			&& !info->curr_flags[MINUS]))
+		print_minwth(info, len);
+	nbr = print_plus_minus(nbr, info);
+	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS])
+		|| (info->is_dot == 1 && !info->curr_flags[ZERO]
+			&& !info->curr_flags[MINUS])
+		|| (info->precision > len && info->curr_flags[MINUS]))
+		print_zeros(info, len);
+	return (nbr);
+}
+
+void	print_d(t_info *info)
 {
 	intmax_t	nbr;
 	int			len;
@@ -81,15 +99,7 @@ void		print_d(t_info *info)
 	if (nbr < 0)
 		info->is_negative = 1;
 	check_space(info);
-	if ((!info->curr_flags[MINUS] && info->is_dot == 1)
-	|| (info->curr_flags[ZERO] && info->is_dot == 0 && !info->curr_flags[MINUS])
-	|| (info->minwth && !info->curr_flags[ZERO] && !info->curr_flags[MINUS]))
-		print_minwth(info, len);
-	nbr = print_plus_minus(nbr, info);
-	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS])
-	|| (info->is_dot == 1 && !info->curr_flags[ZERO] && !info->curr_flags[MINUS])
-	|| (info->precision > len && info->curr_flags[MINUS]))
-		print_zeros(info, len);
+	nbr = print_front(info, nbr, len);
 	str = ft_itoa_base(nbr, 10);
 	if (info->zero == 0)
 		ft_putstr(str);

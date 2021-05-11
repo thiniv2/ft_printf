@@ -6,7 +6,7 @@
 #    By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 15:24:45 by thinguye          #+#    #+#              #
-#    Updated: 2021/04/27 15:41:09 by thinguye         ###   ########.fr        #
+#    Updated: 2021/05/11 17:07:40 by thinguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ SRC_FILES = ft_printf.c \
 			unsigned_convs.c \
 			print_percent.c \
 			ft_ftoa.c \
-			modify_ox.c
+			modify_ox.c \
+			modify_d.c \
+			print_decimals.c
 SOURCES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(SRC_FILES:.c=.o)
 HDR = includes/ft_printf.h

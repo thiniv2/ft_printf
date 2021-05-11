@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini <thinguye@student.42.fi>             +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 11:15:34 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/22 04:00:31 by thini            ###   ########.fr       */
+/*   Updated: 2021/05/11 17:14:18 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		base_nbr_count(intmax_t value, int base)
+int	base_nbr_count(intmax_t value, int base)
 {
 	int	len;
 
@@ -45,7 +45,7 @@ char	*ft_itoa_base(intmax_t value, int base)
 		return ("0");
 	len = base_nbr_count(value, base);
 	base_str = "0123456789abcdef";
-	ret = (char*)malloc(sizeof(char) * len + 1);
+	ret = (char *)malloc(sizeof(char) * len + 1);
 	ret[len--] = '\0';
 	if (value < 0)
 	{
@@ -72,7 +72,7 @@ char	*ft_itoa_base_caps(intmax_t value, int base)
 		return ("0");
 	len = base_nbr_count(value, base);
 	base_str = "0123456789ABCDEF";
-	ret = (char*)malloc(sizeof(char) * len + 1);
+	ret = (char *)malloc(sizeof(char) * len + 1);
 	ret[len--] = '\0';
 	if (value < 0)
 	{

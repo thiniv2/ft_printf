@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini-42 <thinguye@student.42.fi>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 17:23:30 by thini-42          #+#    #+#             */
-/*   Updated: 2021/04/02 16:06:15 by thini-42         ###   ########.fr       */
+/*   Updated: 2021/05/11 16:54:25 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int		count_nbr(intmax_t nbr)
+int	count_nbr(intmax_t nbr)
 {
 	long	res;
 
@@ -35,13 +35,12 @@ char	*ft_intmax_itoa(intmax_t nbr)
 	i = count_nbr(nbr);
 	if (nbr < 0)
 	{
-		if (!(dst = ft_strnew(i + 1)))
-			return (NULL);
+		dst = ft_strnew(i + 1);
 		dst[0] = '-';
 		nbr = -nbr;
 	}
-	else if (!(dst = ft_strnew(i--)))
-		return (NULL);
+	else
+		dst = ft_strnew(i--);
 	if (nbr == 0)
 		dst[0] = '0';
 	while (nbr > 0)

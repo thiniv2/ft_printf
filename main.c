@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 10:48:09 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/10 19:52:51 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:12:49 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int main(void)
 
 	sprintf(s1, "TESTING FLOATS\n");
 	write(1, s1, strlen(s1));
-	float f = 12.45;
+	float f = -12.45;
 
-//  TEST 1
+// TEST 1
 	ret1 =  sprintf(s1, "a1: |%f|", f);
 	write(1, s1, strlen(s1));
 	ft_printf(" %d\n", ret1);
@@ -224,7 +224,7 @@ int main(void)
 
 // //  TESTING D
 
-// 	i = 42;
+// 	i = 0;
 // 	sprintf(s1, "\nTESTING D\n");
 // 	write(1, s1, strlen(s1));
 
@@ -751,29 +751,44 @@ int main(void)
 
 
 // // TESTING UNSIGNED
-// 	i = 0;
+// 	i = 32;
 // 	sprintf(s1, "TESTING UNSIGNED\n");
 // 	write(1, s1, strlen(s1));
 
 // //	TEST 1
-// 	sprintf(s1, "a1: |%u|\n", i);
+// 	ret1 = sprintf(s1, "a1: |%u|", i);
 // 	write(1, s1, strlen(s1));
-// 	ft_printf("b1: |%u|\n", i);
-	
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b1: |%u|", i);
+// 	ft_printf(" %d\n", ret2);
+
 // //	TEST 2
-// 	sprintf(s1, "a2: |%05u|\n", i);
+// 	ret1 = sprintf(s1, "a2: |%#05u|", i);
 // 	write(1, s1, strlen(s1));
-// 	ft_printf("b2: |%05u|\n", i);
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b2: |%#05u|", i);
+// 	ft_printf(" %d\n", ret2);
 
 // //	TEST 3
-// 	sprintf(s1, "a3: |%-5u|\n", i);
+// 	ret1 = sprintf(s1, "a3: |%#-5u|", i);
 // 	write(1, s1, strlen(s1));
-// 	ft_printf("b3: |%-5u|\n", i);
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b3: |%#-5u|", i);
+// 	ft_printf(" %d\n", ret2);
 
 // //	TEST 4
-// 	sprintf(s1, "a4: |%+02u|\n", i);
+// 	ret1 = sprintf(s1, "a4: |%#+03u|", i);
 // 	write(1, s1, strlen(s1));
-// 	ft_printf("b4: |%+02u|\n", i);
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b4: |%#+03u|", i);
+// 	ft_printf(" %d\n", ret2);
+
+// //	TEST 5
+// 	ret1 = sprintf(s1, "a4: |%#3.5u|", i);
+// 	write(1, s1, strlen(s1));
+// 	ft_printf(" %d\n", ret1);
+// 	ret2 = ft_printf("b4: |%#3.5u|", i);
+// 	ft_printf(" %d\n", ret2);
 
 	return (0);
 }

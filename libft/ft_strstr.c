@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 13:33:29 by thinguye          #+#    #+#             */
-/*   Updated: 2019/10/21 16:19:48 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:30:16 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 	counter = 0;
 	i = 0;
 	if (needle[i] == '\0')
-		return ((char*)haystack);
+		return ((char *)haystack);
 	while (haystack[i])
 	{
 		counter = 0;
@@ -31,7 +31,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 			counter++;
 			a = i + counter;
 			if (needle[counter] == '\0')
-				return ((char*)(haystack + a - counter));
+				return ((char *)(haystack + a - counter));
 		}
 		i++;
 	}

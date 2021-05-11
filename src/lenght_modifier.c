@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   lenght_modifier.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thini <thinguye@student.42.fi>             +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 14:50:07 by thinguye          #+#    #+#             */
-/*   Updated: 2021/04/21 07:00:05 by thini            ###   ########.fr       */
+/*   Updated: 2021/05/11 17:17:11 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-intmax_t set_modifier(t_info *info)
+intmax_t	set_modifier(t_info *info)
 {
-	intmax_t value;
+	intmax_t	value;
 
 	if (ft_strcmp(info->curr_modifiers, "h") == 0)
 		value = (short)va_arg(info->args, int);
@@ -33,10 +33,10 @@ intmax_t set_modifier(t_info *info)
 
 uintmax_t	set_unsigned_modifier(t_info *info)
 {
-	intmax_t value;
+	intmax_t	value;
+
 	if (ft_strcmp(info->curr_modifiers, "h") == 0)
 		value = (unsigned short)va_arg(info->args, unsigned int);
-
 	else if (ft_strcmp(info->curr_modifiers, "hh") == 0)
 		value = (unsigned char)va_arg(info->args, unsigned int);
 	else if (ft_strcmp(info->curr_modifiers, "l") == 0)
@@ -50,21 +50,23 @@ uintmax_t	set_unsigned_modifier(t_info *info)
 	return ((uintmax_t)value);
 }
 
-void		check_modifier(t_info *info)
+void	check_modifier(t_info *info)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	if (CURR_POS == 'h' || CURR_POS == 'l' || CURR_POS == 'L')
+	if (info->format[info->i] == 'h'
+		|| info->format[info->i] == 'l'
+		|| info->format[info->i] == 'L')
 	{
 		while (info->modifiers[i] != '\0')
 		{
-			while (info->modifiers[i] == CURR_POS)
+			while (info->modifiers[i] == info->format[info->i])
 			{
 				if (j < 2)
-					info->curr_modifiers[j++] = CURR_POS;
+					info->curr_modifiers[j++] = info->format[info->i];
 				info->i++;
 			}
 			i++;

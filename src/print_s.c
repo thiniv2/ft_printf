@@ -6,25 +6,25 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 12:24:29 by thinguye          #+#    #+#             */
-/*   Updated: 2021/02/08 07:05:07 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:13:47 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void		handle_print(t_info *info, char *str, int len)
+void	handle_print(t_info *info, char *str, int len)
 {
 	write(1, str, len);
 	info->chars_printed += len;
 }
 
-void		print_s(t_info *info)
+void	print_s(t_info *info)
 {
 	char		*str;
 	int			len;
 	char		*print;
 
-	str = (char*)va_arg(info->args, char*);
+	str = (char *)va_arg(info->args, char *);
 	if (str == NULL)
 		print = "(null)";
 	else

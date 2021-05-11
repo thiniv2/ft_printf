@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thinguye <thinguye@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 11:16:27 by thinguye          #+#    #+#             */
-/*   Updated: 2019/11/01 14:04:10 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:25:32 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_strclr(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (s)

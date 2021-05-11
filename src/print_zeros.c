@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 14:23:14 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/10 17:50:08 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/11 17:14:57 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,17 @@ void	print_zeros_d(t_info *info, int len)
 
 	diff = 0;
 	len += 0;
-//	ft_putnbr(info->front_len);
-//	ft_putnbr(info->f_prec);
 	if (info->curr_flags[ZERO] && !info->curr_flags[MINUS])
 	{
 		if (info->is_dot == 1)
 		{
-			diff = (info->front_len + info->f_prec); // 3 + 1
-			if (info->f_prec != 0) // check if prints dot
+			diff = (info->front_len + info->f_prec);
+			if (info->f_prec != 0)
 				diff++;
 		}
 		else
 			diff = info->front_len + 7;
-		info->minwth -= diff; // 4 - 3
-	//	ft_putnbr(diff);
+		info->minwth -= diff;
 		while (info->minwth > 0)
 		{
 			write(1, "0", 1);
@@ -44,6 +41,7 @@ void	print_zeros_d(t_info *info, int len)
 void	print_zeros(t_info *info, int len)
 {
 	int		diff;
+
 	if (info->precision == 0)
 		return ;
 	if (info->precision > 0)
