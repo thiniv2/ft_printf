@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 16:03:13 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/11 17:13:04 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:36:53 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	print_f(t_info *info)
 		print_minwth(info, ft_strlen(str));
 	if (info->is_negative == 1)
 		write(1, "-", 1);
-	print_zeros_d(info, ft_strlen(str));
+	print_zeros_f(info, ft_strlen(str));
 	print_front(info, str);
 	if (info->f_prec != 0)
 	{

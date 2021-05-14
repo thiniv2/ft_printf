@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:07:51 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/11 16:46:04 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/14 18:00:23 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	print_o(t_info *info)
 	char		*str;
 
 	value = set_unsigned_modifier(info);
-	str = ft_itoa_base(value, 8);
+	str = unsigned_itoa(value, 8);
 	len = ft_strlen(str);
 	check_zero(info, value);
 	len = check_hash(info, value, len);

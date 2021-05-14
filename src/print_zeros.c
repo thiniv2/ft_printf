@@ -6,13 +6,13 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 14:23:14 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/11 17:14:57 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:37:18 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	print_zeros_d(t_info *info, int len)
+void	print_zeros_f(t_info *info, int len)
 {
 	int		diff;
 
@@ -29,6 +29,8 @@ void	print_zeros_d(t_info *info, int len)
 		else
 			diff = info->front_len + 7;
 		info->minwth -= diff;
+		if (info->is_negative == 0)
+			info->minwth++;
 		while (info->minwth > 0)
 		{
 			write(1, "0", 1);

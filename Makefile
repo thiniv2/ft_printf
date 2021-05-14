@@ -6,7 +6,7 @@
 #    By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/08 15:24:45 by thinguye          #+#    #+#              #
-#    Updated: 2021/05/11 17:07:40 by thinguye         ###   ########.fr        #
+#    Updated: 2021/05/14 17:54:45 by thinguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRC_FILES = ft_printf.c \
 			ft_ftoa.c \
 			modify_ox.c \
 			modify_d.c \
-			print_decimals.c
+			print_decimals.c \
+			unsigned_itoa.c
 SOURCES = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(SRC_FILES:.c=.o)
 HDR = includes/ft_printf.h

@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 14:45:01 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/11 17:08:21 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:57:37 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void				print_u(t_info *info);
 void				print_f(t_info *info);
 void				print_s(t_info *info);
 void				print_zeros(t_info *info, int len);
-void				print_zeros_d(t_info *info, int len);
+void				print_zeros_f(t_info *info, int len);
 void				print_percent(t_info *info);
 int					ft_printf(const char *format, ...);
 int					base_nbr_count(intmax_t value, int base);
@@ -89,4 +89,6 @@ char				*ft_uitoa_base_caps(uintmax_t value, int base);
 char				*ft_uitoa_base(uintmax_t value, int base);
 int					ubase_nbr_count(uintmax_t value, int base);
 char				*ft_ftoa(long double src, int prec);
+char				*unsigned_itoa(uintmax_t value, int base);
+char				*unsigned_itoa_caps(uintmax_t value, int base);
 #endif

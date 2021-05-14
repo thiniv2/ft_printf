@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 13:13:22 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/11 16:39:52 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:37:07 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,17 @@ int	modify_s(t_info *info, int len)
 
 int	modify_f(t_info *info, int len)
 {
+	if (info->f_prec == 0)
+		len--;
+	if (info->is_negative == 1)
+		len++;
 	if (info->is_dot == -1)
-		return (info->minwth - (len + 1));
+		return (info->minwth - (len));
 	else if (info->is_dot == 1
 		&& info->minwth > info->f_prec && info->f_prec > 0)
-		return (info->minwth - (len + 1));
+		return (info->minwth - (len));
 	else
-		return (info->minwth - len);
+		return ((info->minwth - len));
 }
 
 void	print_minwth(t_info *info, int len)

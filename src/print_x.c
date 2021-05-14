@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 10:56:24 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/11 15:58:10 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/14 18:09:46 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	handle_hash_x(t_info *info, uintmax_t value)
 char	*check_caps(t_info *info, uintmax_t value)
 {
 	if (info->curr_arg == 'x')
-		return (ft_itoa_base(value, 16));
+		return (unsigned_itoa(value, 16));
 	else
-		return (ft_itoa_base_caps(value, 16));
+		return (unsigned_itoa_caps(value, 16));
 }
 
 void	check_value(t_info *info, uintmax_t value)
