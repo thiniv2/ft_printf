@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 10:48:09 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/14 18:19:52 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/14 18:33:06 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,41 +192,62 @@ int main(void)
 	write(1, s1, strlen(s1));
 
 	str = "hello world";
-//	TEST 1
-	sprintf(s1, "a1: |%s|\n", str);
-	write(1, s1, strlen(s1));
-	ft_printf("b1: |%s|\n", str);
 
-
-//	TEST 2
-	sprintf(s1, "a2: |%05.3s|\n", str);
+//  TEST 1
+	ret1 =  sprintf(s1, "a1: |%s|", str);
 	write(1, s1, strlen(s1));
-	ft_printf("b2: |%05.3s|\n", str);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b1: |%s|", str);
+	ft_printf(" %d\n", ret2);
 
-//	TEST 3
-	sprintf(s1, "a3: |%016.6s|\n", str);
+//  TEST 2
+	ret1 =  sprintf(s1, "a2: |%05.3s|", str);
 	write(1, s1, strlen(s1));
-	ft_printf("b3: |%016.6s|\n", str);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b2: |%05.3s|", str);
+	ft_printf(" %d\n", ret2);
 
-//	TEST 4
-	sprintf(s1, "a4: |%-16.10s|\n", str);
+//  TEST 3
+	ret1 =  sprintf(s1, "a3: |%016.6s|", str);
 	write(1, s1, strlen(s1));
-	ft_printf("b4: |%-16.10s|\n", str);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b3: |%016.6s|", str);
+	ft_printf(" %d\n", ret2);
 
-//	TEST 5
-	sprintf(s1, "a5: |%-016.s|\n", str);
+//  TEST 4
+	ret1 =  sprintf(s1, "a4: |%-16.10s|", str);
 	write(1, s1, strlen(s1));
-	ft_printf("b5: |%-016.s|\n", str);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b4: |%-16.10s|", str);
+	ft_printf(" %d\n", ret2);
 
-//	TEST 6
-	sprintf(s1, "a6: |%-13s|\n", str);
+//  TEST 5
+	ret1 =  sprintf(s1, "a5: |%-016.s|", str);
 	write(1, s1, strlen(s1));
-	ft_printf("b6: |%-13s|\n", str);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b5: |%-016.s|", str);
+	ft_printf(" %d\n", ret2);
 
-//	TEST 7
-	sprintf(s1, "a7: |%-0.13s|\n", str);
+//  TEST 6
+	ret1 =  sprintf(s1, "a6: |%-13s|", str);
 	write(1, s1, strlen(s1));
-	ft_printf("b7: |%-0.13s|\n", str);
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b6: |%-13s|", str);
+	ft_printf(" %d\n", ret2);
+
+//  TEST 7
+	ret1 =  sprintf(s1, "a7: |%-0.13s|", str);
+	write(1, s1, strlen(s1));
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b7: |%-0.13s|", str);
+	ft_printf(" %d\n", ret2);
+
+//	TEST 8
+	ret1 = sprintf(s1, "a8: |%s %s %s|", "Hello", "World", "!");
+	write(1, s1, strlen(s1));
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b8: |%s %s %s|", "Hello", "World", "!");
+	ft_printf(" %d\n", ret2);
 
 //  TESTING D
 	i = 0;
@@ -786,19 +807,18 @@ int main(void)
 	ft_printf(" %d\n", ret2);
 
 //	TEST 5
-	ret1 = sprintf(s1, "a4: |%#3.5u|", i);
+	ret1 = sprintf(s1, "a5: |%#3.5u|", i);
 	write(1, s1, strlen(s1));
 	ft_printf(" %d\n", ret1);
-	ret2 = ft_printf("b4: |%#3.5u|", i);
+	ret2 = ft_printf("b5: |%#3.5u|", i);
 	ft_printf(" %d\n", ret2);
 	
 //	TEST 6
-	ret1 = sprintf(s1, "a5: |%-#25.23llu|", LLONG_MAX);
+	ret1 = sprintf(s1, "a6: |%-#25.23llu|", LLONG_MAX);
 	write(1, s1, strlen(s1));
 	ft_printf(" %d\n", ret1);
-	ret2 = ft_printf("b5: |%-#25.23llu|", LLONG_MAX);
+	ret2 = ft_printf("b6: |%-#25.23llu|", LLONG_MAX);
 	ft_printf(" %d\n", ret2);
-
 
 	// ret1 = sprintf(s1, "x min: |%llx|", LLONG_MIN);
 	// write(1, s1, strlen(s1));
