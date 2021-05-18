@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 10:48:09 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/14 18:33:06 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/18 16:44:31 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int main(void)
 	ret2 = ft_printf("b14: |%014.6f|", f);
 	ft_printf(" %d\n", ret2);
 
-	//	TESTING PERCENT
+//	TESTING PERCENT
 	sprintf(s1, "\nTESTING PERCENT\n");
 	write(1, s1, strlen(s1));
 
@@ -861,6 +861,8 @@ int main(void)
 	// ft_printf(" %d\n", ret1);
 	// ret2 = ft_printf("|%llo, %llo|", 0llu, ULLONG_MAX);
 	// ft_printf(" %d\n", ret2);
+
+	while (1);
 
 	return (0);
 }

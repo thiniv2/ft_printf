@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 16:03:13 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/14 17:36:53 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/18 16:42:47 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,6 @@ void	print_f(t_info *info)
 	print_decimals(info, str);
 	if (info->curr_flags[MINUS])
 		print_minwth(info, ft_strlen(str));
+	if (str)
+		free(str);
 }

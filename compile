@@ -1,5 +1,4 @@
 make re
-gcc main.c libftprintf.a libft/libft.a
+gcc main3.c libftprintf.a libft/libft.a
 make clean
 ./a.out | cat -e
-

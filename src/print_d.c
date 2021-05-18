@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 20:16:09 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/11 16:31:02 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/18 17:19:07 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,6 @@ void	print_d(t_info *info)
 	info->chars_printed += ft_strlen(str);
 	if (info->curr_flags[MINUS])
 		print_minwth(info, len);
+	if (nbr != 0)
+		free(str);
 }
