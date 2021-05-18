@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 16:34:15 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/18 18:06:31 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/18 18:26:32 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	handle_prec(t_info *info, int diff, int len)
 		if (info->curr_flags[PLUS] && !info->curr_flags[MINUS])
 			len++;
 		diff = info->minwth - len;
+		if (info->is_negative == 1 && info->curr_flags[MINUS])
+			diff++;
 		return (diff);
 		
 	}
@@ -30,9 +32,9 @@ int	handle_prec(t_info *info, int diff, int len)
 	}
 	else
 		diff = info->minwth - info->precision;
-	if (info->is_negative == 1 || (info->curr_flags[PLUS]
-			&& !info->curr_flags[MINUS]))
-		diff--;
+//	if (info->is_negative == 1 || (info->curr_flags[PLUS]
+//			&& !info->curr_flags[MINUS]))
+//		diff--;
 	return (diff);
 }
 

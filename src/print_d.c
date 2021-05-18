@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 20:16:09 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/18 17:19:07 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/18 18:26:04 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ intmax_t	print_front(t_info *info, intmax_t nbr, int len)
 	if ((info->curr_flags[ZERO] && !info->curr_flags[MINUS])
 		|| (info->is_dot == 1 && !info->curr_flags[ZERO]
 			&& !info->curr_flags[MINUS])
-		|| (info->precision > len && info->curr_flags[MINUS]))
+		|| (info->precision >= len && info->curr_flags[MINUS]))
 		print_zeros(info, len);
 	return (nbr);
 }
