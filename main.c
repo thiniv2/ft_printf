@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 10:48:09 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/18 16:44:31 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/18 17:30:54 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -413,6 +413,13 @@ int main(void)
 	write(1, s1, strlen(s1));
 	ft_printf(" %d\n", ret1);
 	ret2 = ft_printf("b23: |%.d|", 0);
+	ft_printf(" %d\n", ret2);
+
+//  TEST 24
+	ret1 =  sprintf(s1, "a24: |%15.4d|", -424242);
+	write(1, s1, strlen(s1));
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("b24: |%15.4d|", -424242);
 	ft_printf(" %d\n", ret2);
 
 	// TESTING xX
