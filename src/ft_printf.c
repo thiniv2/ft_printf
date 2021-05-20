@@ -35,7 +35,7 @@ int	ft_printf(const char *format, ...)
 		init(info);
 		read_format(info);
 		va_end(info->args);
-		free(info);
+	//	free(info);
 	}
 	return (info->chars_printed);
 }

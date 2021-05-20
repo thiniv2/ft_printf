@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 10:48:09 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/18 17:30:54 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/20 16:39:10 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,17 +201,17 @@ int main(void)
 	ft_printf(" %d\n", ret2);
 
 //  TEST 2
-	ret1 =  sprintf(s1, "a2: |%05.3s|", str);
+	ret1 =  sprintf(s1, "a2: |%5.3s|", str);
 	write(1, s1, strlen(s1));
 	ft_printf(" %d\n", ret1);
-	ret2 = ft_printf("b2: |%05.3s|", str);
+	ret2 = ft_printf("b2: |%5.3s|", str);
 	ft_printf(" %d\n", ret2);
 
 //  TEST 3
-	ret1 =  sprintf(s1, "a3: |%016.6s|", str);
+	ret1 =  sprintf(s1, "a3: |%16.6s|", str);
 	write(1, s1, strlen(s1));
 	ft_printf(" %d\n", ret1);
-	ret2 = ft_printf("b3: |%016.6s|", str);
+	ret2 = ft_printf("b3: |%16.6s|", str);
 	ft_printf(" %d\n", ret2);
 
 //  TEST 4
@@ -250,7 +250,7 @@ int main(void)
 	ft_printf(" %d\n", ret2);
 
 //  TESTING D
-	i = 0;
+	i = -4242;
 	sprintf(s1, "\nTESTING D\n");
 	write(1, s1, strlen(s1));
 
@@ -395,31 +395,31 @@ int main(void)
 	ft_printf(" %d\n", ret2);
 
 //  TEST 21
-	ret1 =  sprintf(s1, "a21: |%+10.5d|", 4242);
+	ret1 =  sprintf(s1, "a21: |%+10.5d|", i);
 	write(1, s1, strlen(s1));
 	ft_printf(" %d\n", ret1);
-	ret2 = ft_printf("b21: |%+10.5d|", 4242);
+	ret2 = ft_printf("b21: |%+10.5d|", i);
 	ft_printf(" %d\n", ret2);
 
 //  TEST 22
-	ret1 =  sprintf(s1, "a22: |%04.2d|", -1);
+	ret1 =  sprintf(s1, "a22: |%05.3d|", i);
 	write(1, s1, strlen(s1));
 	ft_printf(" %d\n", ret1);
-	ret2 = ft_printf("b21: |%04.2d|", -1);
+	ret2 = ft_printf("b22: |%05.3d|", i);
 	ft_printf(" %d\n", ret2);
 
 //  TEST 23
-	ret1 =  sprintf(s1, "a23: |%.d|", 0);
+	ret1 =  sprintf(s1, "a23: |%.d|", i);
 	write(1, s1, strlen(s1));
 	ft_printf(" %d\n", ret1);
-	ret2 = ft_printf("b23: |%.d|", 0);
+	ret2 = ft_printf("b23: |%.d|", i);
 	ft_printf(" %d\n", ret2);
 
 //  TEST 24
-	ret1 =  sprintf(s1, "a24: |%15.4d|", -424242);
+	ret1 =  sprintf(s1, "a24: |%15.4d|", i);
 	write(1, s1, strlen(s1));
 	ft_printf(" %d\n", ret1);
-	ret2 = ft_printf("b24: |%15.4d|", -424242);
+	ret2 = ft_printf("b24: |%15.4d|", i);
 	ft_printf(" %d\n", ret2);
 
 	// TESTING xX
@@ -827,35 +827,35 @@ int main(void)
 	ret2 = ft_printf("b6: |%-#25.23llu|", LLONG_MAX);
 	ft_printf(" %d\n", ret2);
 
-	// ret1 = sprintf(s1, "x min: |%llx|", LLONG_MIN);
-	// write(1, s1, strlen(s1));
-	// ft_printf(" %d\n", ret1);
-	// ret2 = ft_printf("x min: |%llx|", LLONG_MIN);
-	// ft_printf(" %d\n", ret2);
+	ret1 = sprintf(s1, "x min: |%llx|", LLONG_MIN);
+	write(1, s1, strlen(s1));
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("x min: |%llx|", LLONG_MIN);
+	ft_printf(" %d\n", ret2);
 	
-	// ret1 = sprintf(s1, "X max: |%llX|", LLONG_MAX);
-	// write(1, s1, strlen(s1));
-	// ft_printf(" %d\n", ret1);
-	// ret2 = ft_printf("X max: |%llX|", LLONG_MAX);
-	// ft_printf(" %d\n", ret2);
+	ret1 = sprintf(s1, "X max: |%llX|", LLONG_MAX);
+	write(1, s1, strlen(s1));
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("X max: |%llX|", LLONG_MAX);
+	ft_printf(" %d\n", ret2);
 	
-	// ret1 = sprintf(s1, "x umax: |%llx|", ULLONG_MAX);
-	// write(1, s1, strlen(s1));
-	// ft_printf(" %d\n", ret1);
-	// ret2 = ft_printf("x umax: |%llx|", ULLONG_MAX);
-	// ft_printf(" %d\n", ret2);
+	ret1 = sprintf(s1, "x umax: |%llx|", ULLONG_MAX);
+	write(1, s1, strlen(s1));
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("x umax: |%llx|", ULLONG_MAX);
+	ft_printf(" %d\n", ret2);
 
-	// ret1 = sprintf(s1, "o min: |%llo|", LLONG_MIN);
-	// write(1, s1, strlen(s1));
-	// ft_printf(" %d\n", ret1);
-	// ret2 = ft_printf("o min: |%llo|", LLONG_MIN);
-	// ft_printf(" %d\n", ret2);
+	ret1 = sprintf(s1, "o min: |%llo|", LLONG_MIN);
+	write(1, s1, strlen(s1));
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("o min: |%llo|", LLONG_MIN);
+	ft_printf(" %d\n", ret2);
 	
-	// ret1 = sprintf(s1, "o max: |%llo|", LLONG_MAX);
-	// write(1, s1, strlen(s1));
-	// ft_printf(" %d\n", ret1);
-	// ret2 = ft_printf("o max: |%llo|", LLONG_MAX);
-	// ft_printf(" %d\n", ret2);
+	ret1 = sprintf(s1, "o max: |%llo|", LLONG_MAX);
+	write(1, s1, strlen(s1));
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("o max: |%llo|", LLONG_MAX);
+	ft_printf(" %d\n", ret2);
 
 	ret1 = sprintf(s1, "o umax: |%0-25.23llo|", ULLONG_MAX);
 	write(1, s1, strlen(s1));
@@ -863,13 +863,13 @@ int main(void)
 	ret2 = ft_printf("o umax: |%0-25.23llo|", ULLONG_MAX);
 	ft_printf(" %d\n", ret2);
 
-	// ret1 = sprintf(s1, "|%llo, %llo|", 0llu, ULLONG_MAX);
-	// write(1, s1, strlen(s1));
-	// ft_printf(" %d\n", ret1);
-	// ret2 = ft_printf("|%llo, %llo|", 0llu, ULLONG_MAX);
-	// ft_printf(" %d\n", ret2);
+	ret1 = sprintf(s1, "|%llo, %llo|", 0llu, ULLONG_MAX);
+	write(1, s1, strlen(s1));
+	ft_printf(" %d\n", ret1);
+	ret2 = ft_printf("|%llo, %llo|", 0llu, ULLONG_MAX);
+	ft_printf(" %d\n", ret2);
 
-	while (1);
+	//while (1);
 
 	return (0);
 }

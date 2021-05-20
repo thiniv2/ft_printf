@@ -16,25 +16,28 @@ int	handle_prec(t_info *info, int diff, int len)
 {
 	if (info->minwth > info->precision && info->precision < len)
 	{
-		if (info->curr_flags[PLUS] && !info->curr_flags[MINUS])
+		if (info->curr_flags[PLUS] && !info->curr_flags[MINUS]
+			&& info->is_negative == 0)
 			len++;
 		diff = info->minwth - len;
 		if (info->is_negative == 1 && info->curr_flags[MINUS])
 			diff++;
 		return (diff);
-		
 	}
 	if (info->precision < len)
 	{
 		diff = info->minwth - len;
 		if (info->curr_flags[PLUS] || info->curr_flags[MINUS])
 			diff++;
-	}
+	}	
 	else
+	{
 		diff = info->minwth - info->precision;
-//	if (info->is_negative == 1 || (info->curr_flags[PLUS]
-//			&& !info->curr_flags[MINUS]))
-//		diff--;
+		if ((info->curr_flags[PLUS] && info->precision > len)
+			|| (info->is_negative == 1 && info->precision >= len
+				&& !info->curr_flags[MINUS]))
+			diff--;
+	}	
 	return (diff);
 }
 
