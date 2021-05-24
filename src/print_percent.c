@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 19:42:23 by thini-42          #+#    #+#             */
-/*   Updated: 2021/04/19 13:44:09 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/24 17:14:34 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,16 @@ void	print_percent(t_info *info)
 		info->minwth--;
 		info->chars_printed++;
 	}
-	while (info->minwth > 1 && info->curr_flags[ZERO] == '0')
+	while (info->minwth > 1 && info->curr_flags[ZERO] == '0'
+		&& !info->curr_flags[MINUS])
 	{
 		write(1, "0", 1);
+		info->minwth--;
+		info->chars_printed++;
+	}
+	while (info->minwth > 1 && info->curr_flags[MINUS])
+	{
+		write(1, " ", 1);
 		info->minwth--;
 		info->chars_printed++;
 	}

@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 15:47:12 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/18 17:00:39 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/24 15:48:59 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_printf(const char *format, ...)
 		init(info);
 		read_format(info);
 		va_end(info->args);
-	//	free(info);
+		free(info);
 	}
 	return (info->chars_printed);
 }

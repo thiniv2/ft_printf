@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 13:36:36 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/18 17:18:52 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/24 17:14:56 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	set_tmp_values(t_info *info)
 void	call_readers(t_info *info)
 {
 	info->i++;
+	if (info->format[info->i] == '\0')
+		return ;
 	set_tmp_values(info);
 	check_flags(info);
 	check_minwth(info);
