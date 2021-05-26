@@ -6,7 +6,7 @@
 /*   By: thinguye <thinguye@student.42.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 09:56:15 by thinguye          #+#    #+#             */
-/*   Updated: 2021/05/11 17:22:31 by thinguye         ###   ########.fr       */
+/*   Updated: 2021/05/24 18:42:26 by thinguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	*ft_loop(char *s, size_t i, size_t n, size_t isnegative)
 static void	ft_setnegative(size_t *isnegative, int *n, size_t *i)
 {
 	*isnegative = 1;
-	*n = -*n;
+	*n = - *n;
 	*i = *i + 1;
 }
 
