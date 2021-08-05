@@ -11,4 +11,4 @@ Currently works with flags: ```%c``` ```%s``` ```%p``` ```%d``` ```%i``` ```%o``
 
 And lenght conversions: ```h``` ```hh``` ```l``` ```ll```
 
-Also handles flags: ```#``` ```0``` ```-``` ```+``` , precision and field-width
+Also handles: ```#``` ```0``` ```-``` ```+``` , precision and field-width
