@@ -1,4 +1,4 @@
-Aim of this project was to create printf function from scratch using only the given functions.
+Aim of this project was to create printf function from scratch using only the given functions and according to 42 norme.
 
 Allowed functions:
 - write
