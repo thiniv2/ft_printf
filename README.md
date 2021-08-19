@@ -12,3 +12,5 @@ Currently works with flags: ```%c``` ```%s``` ```%p``` ```%d``` ```%i``` ```%o``
 And lenght conversions: ```h``` ```hh``` ```l``` ```ll```
 
 Also handles: ```#``` ```0``` ```-``` ```+``` , precision and field-width
+
+to run the project you can type: ```./compile```
